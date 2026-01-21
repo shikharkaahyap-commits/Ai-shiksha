@@ -22,19 +22,19 @@ button{
   background:#4caf50;color:white;font-size:14px
 }
 .section{padding:16px}
-h2{margin:6px 0}
+h2,h3{margin:8px 0}
 ul{line-height:1.7}
+.back{background:#ff9800}
 </style>
 </head>
 
 <body>
 
-<header id="title">NCERT Books & Solutions</header>
+<header id="title">AI Shiksha – NCERT Learning</header>
 
 <!-- HOME -->
 <div id="home" class="grid">
-  <div class="card" onclick="openClass()">📚 NCERT Books<small>Class 1–12</small></div>
-  <div class="card" onclick="openSolutions()">📝 NCERT Solutions</div>
+  <div class="card" onclick="openClass()">📚 NCERT Classes<small>Class 8–12</small></div>
   <div class="card" onclick="openNotes()">📒 Notes</div>
   <div class="card" onclick="openVideos()">🎥 Videos</div>
   <div class="card" onclick="openAI()">🤖 AI Course</div>
@@ -42,38 +42,44 @@ ul{line-height:1.7}
 
 <!-- CLASS -->
 <div id="class" class="grid hidden">
-  <div class="card" onclick="openSubject()">Class 10</div>
-  <div class="card">Class 9</div>
-  <div class="card">Class 11</div>
-  <div class="card">Class 12</div>
+  <div class="card" onclick="selectClass(8)">Class 8</div>
+  <div class="card" onclick="selectClass(9)">Class 9</div>
+  <div class="card" onclick="selectClass(10)">Class 10</div>
+  <div class="card" onclick="selectClass(11)">Class 11</div>
+  <div class="card" onclick="selectClass(12)">Class 12</div>
 </div>
 
 <!-- SUBJECT -->
 <div id="subject" class="grid hidden">
-  <div class="card" onclick="openChapter()">Maths</div>
-  <div class="card">Science</div>
-  <div class="card">Hindi</div>
-  <div class="card">English</div>
-  <div class="card">SST</div>
+  <div class="card" onclick="openChapter('Maths')">Maths</div>
+  <div class="card" onclick="openChapter('Science')">Science</div>
+  <div class="card" onclick="openChapter('Hindi')">Hindi</div>
+  <div class="card" onclick="openChapter('English')">English</div>
+  <div class="card" onclick="openChapter('SST')">SST</div>
 </div>
 
 <!-- CHAPTER -->
 <div id="chapter" class="section hidden">
-  <h2>📘 Real Numbers</h2>
-  <button onclick="showNotes()">📖 Notes</button>
+  <h2 id="chapterTitle"></h2>
+
+  <button onclick="showTheory()">📖 Theory (Teacher Style)</button>
+  <button onclick="showExamples()">🧠 Solved Examples</button>
   <button onclick="showBasic()">✏️ Basic Questions</button>
-  <button onclick="showAdvance()">🚀 Advance Questions</button>
+  <button onclick="showAdvance()">🚀 HOTS / Advance</button>
+  <button class="back" onclick="goBackSubject()">⬅ Back</button>
+
   <div id="content"></div>
 </div>
 
 <!-- AI -->
 <div id="ai" class="section hidden">
-<h2>🤖 Artificial Intelligence</h2>
+<h2>🤖 Artificial Intelligence (Class 8–12)</h2>
 <ul>
-<li><b>Basic:</b> AI kya hai, Examples</li>
-<li><b>Intermediate:</b> Machine Learning</li>
-<li><b>Advance:</b> Deep Learning, Career</li>
+<li><b>Basic:</b> AI kya hai, Daily Life Examples</li>
+<li><b>Intermediate:</b> Machine Learning, Data</li>
+<li><b>Advance:</b> Deep Learning, Career, Future</li>
 </ul>
+<button class="back" onclick="goHome()">⬅ Home</button>
 </div>
 
 <script>
@@ -84,6 +90,10 @@ const chapter = document.getElementById("chapter")
 const ai = document.getElementById("ai")
 const title = document.getElementById("title")
 const content = document.getElementById("content")
+const chapterTitle = document.getElementById("chapterTitle")
+
+let currentClass = ""
+let currentSubject = ""
 
 function hideAll(){
   home.classList.add("hidden")
@@ -93,34 +103,70 @@ function hideAll(){
   ai.classList.add("hidden")
 }
 
-function openClass(){hideAll();cls.classList.remove("hidden");title.innerText="Select Class"}
-function openSubject(){hideAll();subject.classList.remove("hidden");title.innerText="Select Subject"}
-function openChapter(){hideAll();chapter.classList.remove("hidden");title.innerText="Chapter"}
+function goHome(){hideAll();home.classList.remove("hidden");title.innerText="AI Shiksha – NCERT Learning"}
+
+function openClass(){hideAll();cls.classList.remove("hidden");title.innerText="Select Class (8–12)"}
+
+function selectClass(clsNo){
+  currentClass = clsNo
+  hideAll()
+  subject.classList.remove("hidden")
+  title.innerText="Class " + clsNo + " – Select Subject"
+}
+
+function openChapter(sub){
+  currentSubject = sub
+  hideAll()
+  chapter.classList.remove("hidden")
+  title.innerText="Class " + currentClass + " – " + sub
+  chapterTitle.innerText="📘 Chapter 1 : Introduction"
+  content.innerHTML=""
+}
+
+function goBackSubject(){
+  hideAll()
+  subject.classList.remove("hidden")
+  title.innerText="Class " + currentClass + " – Select Subject"
+}
+
 function openAI(){hideAll();ai.classList.remove("hidden");title.innerText="AI Course"}
 
-function openSolutions(){alert("Solutions coming soon")}
-function openNotes(){alert("Notes section")}
-function openVideos(){alert("Videos section")}
+function openNotes(){alert("Class wise Notes integrated in Subjects")}
+function openVideos(){alert("Videos section future update")}
 
-function showNotes(){
+function showTheory(){
 content.innerHTML=`
-<h3>📖 Notes – Real Numbers</h3>
+<h3>📖 Teacher Style Theory</h3>
+<p>
+इस अध्याय में हम <b>${currentSubject}</b> को बिल्कुल basic से समझेंगे।
+पहले definition, फिर concept, फिर example और अंत में practice।
+</p>
 <ul>
-<li>Real Numbers = Rational + Irrational</li>
-<li>Rational: p/q (q≠0)</li>
-<li>Irrational: √2, π</li>
+<li>Clear definition</li>
+<li>Step by step explanation</li>
+<li>Board exam focus</li>
 </ul>`
+}
+
+function showExamples(){
+content.innerHTML=`
+<h3>🧠 Solved Examples</h3>
+<ol>
+<li>Example 1 – Step wise solution</li>
+<li>Example 2 – Easy method</li>
+<li>Example 3 – Exam oriented</li>
+</ol>`
 }
 
 function showBasic(){
 let html="<h3>✏️ Basic Questions</h3><ol>"
-for(let i=1;i<=15;i++) html+=`<li>Basic Question ${i}</li>`
+for(let i=1;i<=10;i++) html+=`<li>Basic Question ${i}</li>`
 content.innerHTML=html+"</ol>"
 }
 
 function showAdvance(){
-let html="<h3>🚀 Advance Questions</h3><ol>"
-for(let i=1;i<=15;i++) html+=`<li>Advance Question ${i}</li>`
+let html="<h3>🚀 HOTS / Advance Questions</h3><ol>"
+for(let i=1;i<=10;i++) html+=`<li>Application Based Question ${i}</li>`
 content.innerHTML=html+"</ol>"
 }
 </script>
