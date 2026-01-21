@@ -25,6 +25,33 @@ button{
 h2,h3{margin:8px 0}
 ul{line-height:1.7}
 .back{background:#ff9800}
+
+/* CHAT */
+#chatBtn{
+  position:fixed;bottom:20px;right:20px;
+  background:#3f51b5;color:#fff;
+  padding:12px 16px;border-radius:50px;
+  font-weight:bold;cursor:pointer;
+}
+#aiChat{
+  position:fixed;bottom:80px;right:20px;
+  width:320px;height:420px;
+  background:#fff;border-radius:14px;
+  box-shadow:0 6px 18px #0004;
+  display:flex;flex-direction:column;
+}
+.chatHeader{
+  background:#3f51b5;color:#fff;
+  padding:10px;font-weight:bold;
+  display:flex;justify-content:space-between;
+}
+#chatSubject{padding:6px;border:none}
+#chatBody{flex:1;padding:10px;overflow:auto}
+.chatInput{display:flex}
+.chatInput input{flex:1;border:none;padding:10px}
+.chatInput button{border:none;background:#4caf50;color:#fff;padding:10px}
+.user{margin:6px 0}
+.bot{margin:6px 0;color:#3f51b5}
 </style>
 </head>
 
@@ -35,8 +62,6 @@ ul{line-height:1.7}
 <!-- HOME -->
 <div id="home" class="grid">
   <div class="card" onclick="openClass()">📚 NCERT Classes<small>Class 8–12</small></div>
-  <div class="card" onclick="openNotes()">📒 Notes</div>
-  <div class="card" onclick="openVideos()">🎥 Videos</div>
   <div class="card" onclick="openAI()">🤖 AI Course</div>
 </div>
 
@@ -52,122 +77,125 @@ ul{line-height:1.7}
 <!-- SUBJECT -->
 <div id="subject" class="grid hidden">
   <div class="card" onclick="openChapter('Maths')">Maths</div>
-  <div class="card" onclick="openChapter('Science')">Science</div>
-  <div class="card" onclick="openChapter('Hindi')">Hindi</div>
-  <div class="card" onclick="openChapter('English')">English</div>
-  <div class="card" onclick="openChapter('SST')">SST</div>
+  <div class="card">Science (Coming)</div>
+  <div class="card">Hindi (Coming)</div>
+  <div class="card">English (Coming)</div>
 </div>
 
 <!-- CHAPTER -->
 <div id="chapter" class="section hidden">
   <h2 id="chapterTitle"></h2>
-
-  <button onclick="showTheory()">📖 Theory (Teacher Style)</button>
-  <button onclick="showExamples()">🧠 Solved Examples</button>
-  <button onclick="showBasic()">✏️ Basic Questions</button>
-  <button onclick="showAdvance()">🚀 HOTS / Advance</button>
-  <button class="back" onclick="goBackSubject()">⬅ Back</button>
-
+  <button onclick="showTheory()">📖 Theory</button>
+  <button onclick="showBasic()">✏️ 15 Basic Questions</button>
+  <button onclick="showAdvance()">🚀 15 Advance Questions</button>
+  <button class="back" onclick="goBack()">⬅ Back</button>
   <div id="content"></div>
 </div>
 
-<!-- AI -->
+<!-- AI COURSE -->
 <div id="ai" class="section hidden">
-<h2>🤖 Artificial Intelligence (Class 8–12)</h2>
+<h2>🤖 Artificial Intelligence</h2>
+<p>
+AI ka matlab hai machine ko intelligent banana taaki
+wo insan ki tarah soch sake.
+</p>
 <ul>
-<li><b>Basic:</b> AI kya hai, Daily Life Examples</li>
-<li><b>Intermediate:</b> Machine Learning, Data</li>
-<li><b>Advance:</b> Deep Learning, Career, Future</li>
+<li>Basic: AI kya hai</li>
+<li>Intermediate: Machine Learning</li>
+<li>Advance: Deep Learning & Career</li>
 </ul>
 <button class="back" onclick="goHome()">⬅ Home</button>
 </div>
 
-<script>
-const home = document.getElementById("home")
-const cls = document.getElementById("class")
-const subject = document.getElementById("subject")
-const chapter = document.getElementById("chapter")
-const ai = document.getElementById("ai")
-const title = document.getElementById("title")
-const content = document.getElementById("content")
-const chapterTitle = document.getElementById("chapterTitle")
+<!-- CHAT -->
+<div id="chatBtn" onclick="openChat()">💬 Ask AI</div>
 
-let currentClass = ""
-let currentSubject = ""
+<div id="aiChat" class="hidden">
+  <div class="chatHeader">🤖 AI Shiksha Chat
+    <span onclick="closeChat()">✖</span>
+  </div>
+
+  <select id="chatSubject">
+    <option value="maths">📘 Maths</option>
+    <option value="science">🔬 Science</option>
+    <option value="ai">🤖 AI</option>
+  </select>
+
+  <div id="chatBody"></div>
+
+  <div class="chatInput">
+    <input id="userMsg" placeholder="Sawal likho..." />
+    <button onclick="sendMsg()">Send</button>
+  </div>
+</div>
+
+<script>
+const home=document.getElementById("home")
+const cls=document.getElementById("class")
+const subject=document.getElementById("subject")
+const chapter=document.getElementById("chapter")
+const ai=document.getElementById("ai")
+const title=document.getElementById("title")
+const content=document.getElementById("content")
+const chapterTitle=document.getElementById("chapterTitle")
+let currentClass="", currentSubject=""
+
+const DATA={
+ "10":{"Maths":{
+  "Real Numbers":{
+   theory:"Real numbers wo numbers hote hain jo number line par dikhai dete hain. Jaise 1, -2, √2.",
+   basic:Array.from({length:15},(_,i)=>`Basic Question ${i+1}: Real numbers se related.`),
+   advance:Array.from({length:15},(_,i)=>`Advance Question ${i+1}: Real numbers application.`)
+  }
+ }}
+}
 
 function hideAll(){
-  home.classList.add("hidden")
-  cls.classList.add("hidden")
-  subject.classList.add("hidden")
-  chapter.classList.add("hidden")
-  ai.classList.add("hidden")
+ home.classList.add("hidden")
+ cls.classList.add("hidden")
+ subject.classList.add("hidden")
+ chapter.classList.add("hidden")
+ ai.classList.add("hidden")
 }
-
-function goHome(){hideAll();home.classList.remove("hidden");title.innerText="AI Shiksha – NCERT Learning"}
-
-function openClass(){hideAll();cls.classList.remove("hidden");title.innerText="Select Class (8–12)"}
-
-function selectClass(clsNo){
-  currentClass = clsNo
-  hideAll()
-  subject.classList.remove("hidden")
-  title.innerText="Class " + clsNo + " – Select Subject"
+function goHome(){hideAll();home.classList.remove("hidden")}
+function openClass(){hideAll();cls.classList.remove("hidden")}
+function selectClass(c){currentClass=c;hideAll();subject.classList.remove("hidden")}
+function openChapter(s){
+ currentSubject=s;hideAll();chapter.classList.remove("hidden")
+ chapterTitle.innerText=`Class ${currentClass} – Maths – Real Numbers`
 }
-
-function openChapter(sub){
-  currentSubject = sub
-  hideAll()
-  chapter.classList.remove("hidden")
-  title.innerText="Class " + currentClass + " – " + sub
-  chapterTitle.innerText="📘 Chapter 1 : Introduction"
-  content.innerHTML=""
-}
-
-function goBackSubject(){
-  hideAll()
-  subject.classList.remove("hidden")
-  title.innerText="Class " + currentClass + " – Select Subject"
-}
-
-function openAI(){hideAll();ai.classList.remove("hidden");title.innerText="AI Course"}
-
-function openNotes(){alert("Class wise Notes integrated in Subjects")}
-function openVideos(){alert("Videos section future update")}
+function goBack(){hideAll();subject.classList.remove("hidden")}
+function openAI(){hideAll();ai.classList.remove("hidden")}
 
 function showTheory(){
-content.innerHTML=`
-<h3>📖 Teacher Style Theory</h3>
-<p>
-इस अध्याय में हम <b>${currentSubject}</b> को बिल्कुल basic से समझेंगे।
-पहले definition, फिर concept, फिर example और अंत में practice।
-</p>
-<ul>
-<li>Clear definition</li>
-<li>Step by step explanation</li>
-<li>Board exam focus</li>
-</ul>`
+ const d=DATA["10"]["Maths"]["Real Numbers"]
+ content.innerHTML=`<h3>Theory</h3><p>${d.theory}</p>`
 }
-
-function showExamples(){
-content.innerHTML=`
-<h3>🧠 Solved Examples</h3>
-<ol>
-<li>Example 1 – Step wise solution</li>
-<li>Example 2 – Easy method</li>
-<li>Example 3 – Exam oriented</li>
-</ol>`
-}
-
 function showBasic(){
-let html="<h3>✏️ Basic Questions</h3><ol>"
-for(let i=1;i<=10;i++) html+=`<li>Basic Question ${i}</li>`
-content.innerHTML=html+"</ol>"
+ const q=DATA["10"]["Maths"]["Real Numbers"].basic
+ content.innerHTML="<ol>"+q.map(x=>`<li>${x}</li>`).join("")+"</ol>"
+}
+function showAdvance(){
+ const q=DATA["10"]["Maths"]["Real Numbers"].advance
+ content.innerHTML="<ol>"+q.map(x=>`<li>${x}</li>`).join("")+"</ol>"
 }
 
-function showAdvance(){
-let html="<h3>🚀 HOTS / Advance Questions</h3><ol>"
-for(let i=1;i<=10;i++) html+=`<li>Application Based Question ${i}</li>`
-content.innerHTML=html+"</ol>"
+/* CHAT */
+function openChat(){aiChat.classList.remove("hidden")}
+function closeChat(){aiChat.classList.add("hidden")}
+function sendMsg(){
+ let m=userMsg.value.trim(); if(!m) return
+ chatBody.innerHTML+=`<div class="user">${m}</div>`
+ chatBody.innerHTML+=`<div class="bot">${aiReply(m)}</div>`
+ userMsg.value=""
+ chatBody.scrollTop=chatBody.scrollHeight
+}
+function aiReply(q){
+ q=q.toLowerCase()
+ let s=chatSubject.value
+ if(s==="maths") return "Maths Teacher: Topic ka naam likho jaise Real Numbers."
+ if(s==="science") return "Science Teacher: Photosynthesis, Force jaise topic pucho."
+ if(s==="ai") return "AI ka matlab Artificial Intelligence hai."
 }
 </script>
 
