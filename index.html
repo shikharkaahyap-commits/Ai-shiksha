@@ -1,200 +1,110 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Shiksha – Class 8 to 12 Complete Syllabus</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Shiksha – Smart Syllabus</title>
 
-  <style>
-    body { font-family: Arial, sans-serif; margin:0; background:#f5f7fb; color:#222; }
-    header { background:#1e40af; color:#fff; padding:16px; text-align:center; }
-    nav { background:#fff; padding:10px; position:sticky; top:0; box-shadow:0 2px 6px rgba(0,0,0,.08); }
-    nav a { margin:6px; text-decoration:none; color:#1e40af; font-weight:600; }
-    section { padding:16px; }
-    h2 { background:#e0e7ff; padding:10px; border-left:6px solid #1e40af; }
-    h3 { color:#1e3a8a; margin-top:10px; }
-    ul { line-height:1.7; }
-    .card { background:#fff; padding:14px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,.06); margin-bottom:16px; }
-    footer { background:#111827; color:#e5e7eb; text-align:center; padding:14px; }
+<style>
+body{margin:0;font-family:system-ui;background:#f4f6fb}
+header{background:#1e40af;color:#fff;padding:16px;text-align:center}
+nav{position:sticky;top:0;background:#fff;padding:8px;text-align:center;box-shadow:0 2px 6px #0002}
+nav a{margin:6px;color:#1e40af;text-decoration:none;font-weight:600}
 
-    /* AI Chat */
-    #chat { max-width:600px; margin:auto; background:white; padding:10px; border-radius:10px; }
-    .msg { margin:5px 0; }
-    .user { color:blue; }
-    .ai { color:green; }
-  </style>
+.container{padding:14px}
+.card{background:#fff;border-radius:12px;padding:14px;margin-bottom:14px;box-shadow:0 4px 10px #0001}
+
+.accordion{cursor:pointer;font-weight:700;color:#1e3a8a}
+.panel{display:none;margin-top:10px}
+
+button{background:#1e40af;color:#fff;border:none;padding:8px 12px;border-radius:8px}
+
+#chat{max-width:500px;margin:auto}
+.msg{margin:6px 0}
+.user{color:#2563eb}
+.ai{color:#16a34a}
+footer{background:#111827;color:#e5e7eb;text-align:center;padding:12px}
+</style>
 </head>
 
 <body>
 
 <header>
-  <h1>AI Shiksha 🤖📘</h1>
-  <p>Class 8 से 12 तक – Complete Syllabus + AI Learning</p>
+<h1>AI Shiksha 🤖📘</h1>
+<p>Class 8–12 | Syllabus + AI Learning</p>
 </header>
 
 <nav>
-  <a href="#c8">Class 8</a>
-  <a href="#c9">Class 9</a>
-  <a href="#c10">Class 10</a>
-  <a href="#c11">Class 11</a>
-  <a href="#c12">Class 12</a>
-  <a href="#ai">AI Course</a>
-  <a href="#important-questions">Important Questions</a>
-  <a href="#chatbox">AI Chat</a>
-  <a href="#notes">Notes</a>
+<a href="#syllabus">Syllabus</a>
+<a href="#ai">AI Course</a>
+<a href="#chatbox">AI Chat</a>
 </nav>
 
-<!-- ================= CLASS 8 ================= -->
-<section id="c8">
-  <h2>Class 8 Syllabus</h2>
-  <div class="card">
-    <h3>Maths – Chapter-wise</h3>
-    <ul>
-      <li><strong>Chapter 1:</strong> Rational Numbers – Definition, Examples, Operations</li>
-      <li><strong>Chapter 2:</strong> Linear Equations – Solving linear equations</li>
-      <li><strong>Chapter 3:</strong> Understanding Quadrilaterals – Types of quadrilaterals</li>
-      <li><strong>Chapter 4:</strong> Practical Geometry – Constructing angles, triangles</li>
-      <li><strong>Chapter 5:</strong> Data Handling – Mean, Median, Mode</li>
-    </ul>
+<div class="container" id="syllabus">
 
-    <h3>Science – Chapter-wise</h3>
-    <ul>
-      <li><strong>Chapter 1:</strong> Crop Production – Types of crops, Soil preparation</li>
-      <li><strong>Chapter 2:</strong> Microorganisms – Beneficial and harmful microorganisms</li>
-      <li><strong>Chapter 3:</strong> Cell – Structure & Function</li>
-    </ul>
-  </div>
-</section>
+<div class="card">
+<div class="accordion" onclick="toggle(this)">📘 Class 9</div>
+<div class="panel">
+<ul>
+<li><b>Maths:</b> Number System, Polynomials, Coordinate Geometry</li>
+<li><b>Science:</b> Matter, Motion, Atoms</li>
+</ul>
+</div>
+</div>
 
-<!-- ================= CLASS 9 ================= -->
-<section id="c9">
-  <h2>Class 9 Syllabus</h2>
-  <div class="card">
-    <h3>Maths – Chapter-wise</h3>
-    <ul>
-      <li><strong>Chapter 1:</strong> Number System – Rational and Irrational Numbers</li>
-      <li><strong>Chapter 2:</strong> Polynomials – Operations and Graphs</li>
-      <li><strong>Chapter 3:</strong> Coordinate Geometry – Plotting points on the graph</li>
-    </ul>
+<div class="card">
+<div class="accordion" onclick="toggle(this)">📕 Class 10</div>
+<div class="panel">
+<ul>
+<li><b>Maths:</b> Real Numbers, Trigonometry</li>
+<li><b>Science:</b> Chemical Reactions, Life Processes</li>
+</ul>
+</div>
+</div>
 
-    <h3>Science – Chapter-wise</h3>
-    <ul>
-      <li><strong>Chapter 1:</strong> Matter in Our Surroundings – Solid, Liquid, Gas</li>
-      <li><strong>Chapter 2:</strong> Motion – Speed, Velocity, Acceleration</li>
-    </ul>
-  </div>
-</section>
+</div>
 
-<!-- ================= CLASS 10 ================= -->
-<section id="c10">
-  <h2>Class 10 Syllabus</h2>
-  <div class="card">
-    <h3>Maths – Chapter-wise</h3>
-    <ul>
-      <li><strong>Chapter 1:</strong> Real Numbers – Euclid's division lemma, Fundamental theorem of arithmetic</li>
-      <li><strong>Chapter 2:</strong> Polynomials – Roots and coefficients</li>
-      <li><strong>Chapter 3:</strong> Trigonometry – Ratios, Identities</li>
-    </ul>
+<div class="container" id="ai">
+<div class="card">
+<h3>🤖 Artificial Intelligence Course</h3>
+<ul>
+<li>AI Basics</li>
+<li>Machine Learning</li>
+<li>Future & Careers</li>
+</ul>
+</div>
+</div>
 
-    <h3>Science – Chapter-wise</h3>
-    <ul>
-      <li><strong>Chapter 1:</strong> Chemical Reactions – Types of reactions</li>
-      <li><strong>Chapter 2:</strong> Life Processes – Human Circulatory system</li>
-    </ul>
-  </div>
-</section>
-
-<!-- ================= AI COURSE ================= -->
-<section id="ai">
-  <h2>Artificial Intelligence (AI Course)</h2>
-  <div class="card">
-    <h3>Basic</h3>
-    <ul>
-      <li>What is AI?</li>
-      <li>History of AI</li>
-      <li>AI in Daily Life</li>
-    </ul>
-
-    <h3>Intermediate</h3>
-    <ul>
-      <li>Machine Learning Basics</li>
-      <li>Data & Algorithms</li>
-      <li>AI Tools</li>
-    </ul>
-
-    <h3>Advanced</h3>
-    <ul>
-      <li>Deep Learning</li>
-      <li>AI Models</li>
-      <li>AI Career & Future</li>
-    </ul>
-  </div>
-</section>
-
-<!-- ================= IMPORTANT QUESTIONS ================= -->
-<section id="important-questions">
-  <h2>Most Important Questions</h2>
-  <div class="card">
-    <h3>Class 10 – Important Questions</h3>
-    <ul>
-      <li>What is the Fundamental Theorem of Arithmetic?</li>
-      <li>Explain the process of photosynthesis in plants.</li>
-      <li>What are the different types of chemical reactions?</li>
-    </ul>
-  </div>
-</section>
-
-<!-- ================= NOTES ================= -->
-<section id="notes">
-  <h2>Study Notes</h2>
-  <div class="card">
-    <h3>Class 10 Maths Notes</h3>
-    <ul>
-      <li>Chapter 1 – Real Numbers: Important Formulas</li>
-      <li>Chapter 2 – Polynomials: Key Points</li>
-    </ul>
-
-    <h3>Class 10 Science Notes</h3>
-    <ul>
-      <li>Chapter 1 – Chemical Reactions: Examples and Laws</li>
-      <li>Chapter 2 – Life Processes: Key Terms and Definitions</li>
-    </ul>
-  </div>
-</section>
-
-<!-- ================= AI CHAT ================= -->
-<section id="chatbox">
-  <h2>🤖 AI Shiksha Chat</h2>
-  <div id="chat">
-    <div id="messages"></div>
-    <input id="input" placeholder="Syllabus ya AI ke baare me pucho..." style="width:80%">
-    <button onclick="send()">Send</button>
-  </div>
-</section>
+<div class="container" id="chatbox">
+<div class="card">
+<h3>AI Shiksha Chat</h3>
+<div id="chat">
+<div id="messages"></div>
+<input id="input" placeholder="Class ya AI pucho..." style="width:75%">
+<button onclick="send()">Send</button>
+</div>
+</div>
+</div>
 
 <footer>
-  <p>© 2026 AI Shiksha | Free Education for Students</p>
+© 2026 AI Shiksha | Free Education 🇮🇳
 </footer>
 
 <script>
-function send() {
-  let input = document.getElementById("input");
-  let msg = input.value;
-  if(msg==="") return;
+function toggle(x){
+let p=x.nextElementSibling;
+p.style.display=p.style.display==="block"?"none":"block";
+}
 
-  let box = document.getElementById("messages");
-  box.innerHTML += `<div class="msg user">👤 ${msg}</div>`;
-
-  let reply = "Main AI Shiksha hoon. Class 8–12 aur AI syllabus me madad karta hoon 😊";
-
-  if(msg.toLowerCase().includes("class 10"))
-    reply = "Class 10 me Maths, Science, English, Hindi, SST hota hai.";
-
-  if(msg.toLowerCase().includes("ai"))
-    reply = "AI me Machine Learning, Deep Learning aur Career options aate hain.";
-
-  box.innerHTML += `<div class="msg ai">🤖 ${reply}</div>`;
-  input.value="";
+function send(){
+let i=input.value;
+if(!i)return;
+messages.innerHTML+=`<div class='msg user'>👤 ${i}</div>`;
+let r="Main AI Shiksha hoon 😊 Syllabus aur AI dono me madad karta hoon";
+if(i.includes("10"))r="Class 10 me Maths, Science, SST, Hindi, English hota hai";
+if(i.toLowerCase().includes("ai"))r="AI future ka skill hai – ML, DL, Jobs";
+messages.innerHTML+=`<div class='msg ai'>🤖 ${r}</div>`;
+input.value="";
 }
 </script>
 
