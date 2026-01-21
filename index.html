@@ -1,174 +1,124 @@
-<!-- ================= INDEX.HTML ================= --><!DOCTYPE html><html lang="hi">
+<!DOCTYPE html>
+<html lang="hi">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>AI Shiksha – Classes 9 to 11</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Shiksha – NCERT Learning</title>
+
 <style>
-body{font-family:Arial;background:#f4f6fb;margin:0}
-header{background:#1e40af;color:#fff;padding:16px;text-align:center}
-nav{background:#fff;padding:12px;text-align:center}
-nav a{margin:10px;text-decoration:none;font-weight:700;color:#1e40af}
-.card{background:#fff;margin:16px;padding:16px;border-radius:12px;box-shadow:0 4px 10px #0001}
-footer{text-align:center;background:#111827;color:#fff;padding:12px}
+body{margin:0;font-family:Arial;background:#f4f6fb}
+header{background:#3f51b5;color:#fff;padding:14px;text-align:center;font-size:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:16px}
+.card{
+  background:#fff;border-radius:14px;padding:18px;
+  text-align:center;box-shadow:0 4px 10px #0001;
+  cursor:pointer;font-weight:bold
+}
+.card small{display:block;color:#666;margin-top:6px}
+
+.hidden{display:none}
+
+button{
+  width:100%;padding:10px;margin:6px 0;
+  border:none;border-radius:8px;
+  background:#4caf50;color:white;font-size:14px
+}
+
+.section{padding:16px}
+h2{margin:6px 0}
+ul{line-height:1.7}
 </style>
 </head>
+
 <body>
-<header>
-<h1>AI Shiksha 🤖📘</h1>
-<p>Class-wise Learning | Basic to Advance</p>
-</header>
-<nav>
-<a href="class9.html">Class 9</a>
-<a href="class10.html">Class 10</a>
-<a href="class11.html">Class 11</a>
-<a href="ai.html">AI Course</a>
-</nav>
-<div class="card">
-<h2>Welcome</h2>
-<p>Har class ke liye alag page banaya gaya hai. Har subject me Basic explanation + 15 Basic Q + 15 Advanced Q diye gaye hain.</p>
+
+<header id="title">NCERT Books & Solutions</header>
+
+<!-- HOME -->
+<div id="home" class="grid">
+  <div class="card" onclick="openClass()">📚 NCERT Books<small>Class 1–12</small></div>
+  <div class="card">📝 NCERT Solutions</div>
+  <div class="card">📒 Notes</div>
+  <div class="card">🎥 Videos</div>
+  <div class="card" onclick="openAI()">🤖 AI Course</div>
 </div>
-<footer>© 2026 AI Shiksha</footer>
+
+<!-- CLASS -->
+<div id="class" class="grid hidden">
+  <div class="card" onclick="openSubject()">Class 10</div>
+  <div class="card">Class 9</div>
+  <div class="card">Class 11</div>
+  <div class="card">Class 12</div>
+</div>
+
+<!-- SUBJECT -->
+<div id="subject" class="grid hidden">
+  <div class="card" onclick="openChapter()">Maths</div>
+  <div class="card">Science</div>
+  <div class="card">Hindi</div>
+  <div class="card">English</div>
+  <div class="card">SST</div>
+</div>
+
+<!-- CHAPTER -->
+<div id="chapter" class="section hidden">
+  <h2>📘 Real Numbers</h2>
+
+  <button onclick="showNotes()">📖 Notes</button>
+  <button onclick="showBasic()">✏️ Basic Questions</button>
+  <button onclick="showAdvance()">🚀 Advance Questions</button>
+
+  <div id="content"></div>
+</div>
+
+<!-- AI -->
+<div id="ai" class="section hidden">
+<h2>🤖 Artificial Intelligence</h2>
+<ul>
+<li><b>Basic:</b> AI kya hai, Examples, Uses</li>
+<li><b>Intermediate:</b> Machine Learning, Dataset</li>
+<li><b>Advance:</b> Deep Learning, Career, Ethics</li>
+</ul>
+</div>
+
+<script>
+function hideAll(){
+  home.classList.add("hidden")
+  class.classList.add("hidden")
+  subject.classList.add("hidden")
+  chapter.classList.add("hidden")
+  ai.classList.add("hidden")
+}
+
+function openClass(){hideAll();class.classList.remove("hidden");title.innerText="Select Class"}
+function openSubject(){hideAll();subject.classList.remove("hidden");title.innerText="Select Subject"}
+function openChapter(){hideAll();chapter.classList.remove("hidden");title.innerText="Chapter"}
+
+function openAI(){hideAll();ai.classList.remove("hidden");title.innerText="AI Course"}
+
+function showNotes(){
+content.innerHTML=`
+<h3>📖 Notes – Real Numbers</h3>
+<ul>
+<li>Real Numbers = Rational + Irrational</li>
+<li>Rational: p/q (q≠0)</li>
+<li>Irrational: √2, π</li>
+<li>Properties: Closure, Commutative, Associative</li>
+</ul>`
+}
+
+function showBasic(){
+content.innerHTML="<h3>✏️ Basic Questions</h3><ol>"
+for(let i=1;i<=15;i++)content.innerHTML+=`<li>Basic Question ${i}</li>`
+content.innerHTML+="</ol>"
+}
+
+function showAdvance(){
+content.innerHTML="<h3>🚀 Advance Questions</h3><ol>"
+for(let i=1;i<=15;i++)content.innerHTML+=`<li>Advance Question ${i}</li>`
+content.innerHTML+="</ol>"
+}
+</script>
+
 </body>
-</html><!-- ================= CLASS9.HTML ================= --><!DOCTYPE html><html lang="hi"><head><meta charset="UTF-8"><title>Class 9 – All Subjects</title></head>
-<body>
-<h1>Class 9 – All Subjects</h1>
-<h2>Maths</h2>
-<p><b>Basic:</b> Number system, algebra, geometry ka base.</p>
-<h3>📒 NOTES (Class 9 – Maths)</h3>
-<p><b>Real Numbers:</b> Real numbers wo numbers hote hain jo number line par represent kiye ja sakte hain. Isme rational aur irrational dono shamil hote hain.</p>
-<ul>
-<li><b>Rational Numbers:</b> p/q form (q ≠ 0), jaise 1/2, 0.75</li>
-<li><b>Irrational Numbers:</b> Non-terminating, non-repeating decimals, jaise √2, π</li>
-<li><b>Properties:</b> Commutative, Associative, Distributive</li>
-</ul>
-<p><b>15 Basic Q:</b> Real number kya hai? Rational number? Polynomial kya hai? Linear equation kya hai? Triangle types? Mean kya hai? Graph kya hota hai? Coordinate plane? Angle sum property? Statistics kya hai? (15)</p>
-<p><b>15 Advanced Q:</b> √2 irrational prove, Linear eq solve, Triangle congruence proof, Heron formula, Statistics numericals, Graph based Q (15)</p><h2>Science</h2>
-<p><b>Basic:</b> Matter, Motion, Cell, Tissue.</p>
-<p><b>15 Basic Q:</b> Matter states? Motion def? Cell def? Tissue types? Atom def? Speed? Mass? Volume? Diffusion? Photosynthesis? (15)</p>
-<p><b>15 Advanced Q:</b> Motion numericals, Cell organelles explain, Tissue functions, Laws of motion, Case study Q (15)</p><h2>English</h2>
-<p><b>Basic:</b> Grammar + Literature.</p>
-<p><b>15 Basic Q:</b> Noun, Verb, Tense, Article, Summary, Theme, Essay, Letter, Comprehension (15)</p>
-<p><b>15 Advanced Q:</b> Character sketch, Grammar correction, Writing skills (15)</p><h2>Hindi</h2>
-<p><b>Basic:</b> भाषा + साहित्य.</p>
-<p><b>15 Basic Q:</b> संज्ञा, सर्वनाम, रस, अलंकार, पाठ सार (15)</p>
-<p><b>15 Advanced Q:</b> भावार्थ, व्याख्या, लेखक परिचय (15)</p><h2>Social Science</h2>
-<p><b>Basic:</b> History, Geography, Civics, Economics.</p>
-<p><b>15 Basic Q:</b> Democracy, Resources, Climate, History def (15)</p>
-<p><b>15 Advanced Q:</b> French revolution, Climate explain, Map work (15)</p><h2>Computer</h2>
-<p><b>Basic:</b> Computer basics.</p>
-<p><b>15 Basic Q:</b> CPU, RAM, Software, Internet (15)</p>
-<p><b>15 Advanced Q:</b> OS functions, Memory types, Cyber safety (15)</p>
-</body></html><!-- ================= CLASS10.HTML ================= --><!DOCTYPE html><html lang="hi"><head><meta charset="UTF-8"><title>Class 10 – All Subjects</title></head>
-<body>
-<h1>Class 10 – All Subjects</h1>
-<h2>Maths</h2>
-<p><b>Basic:</b> Real numbers, Quadratic, Trigonometry.</p>
-<p><b>15 Basic Q:</b> Euclid lemma, Quadratic def, Trigo ratio, Mean, Probability (15)</p>
-<p><b>15 Advanced Q:</b> HCF by Euclid, Trigo identities prove, Geometry theorem (15)</p><h2>Science</h2>
-<p><b>Basic:</b> Chemical reactions, Life process, Electricity.</p>
-<p><b>15 Basic Q:</b> Reaction def, Respiration, Current, Acid (15)</p>
-<p><b>15 Advanced Q:</b> Reaction types, Heart explain, Ohm law numericals (15)</p><h2>English</h2>
-<p><b>Basic:</b> Grammar + Literature.</p>
-<p><b>15 Basic Q:</b> Grammar rules, Summary, Theme (15)</p>
-<p><b>15 Advanced Q:</b> Character sketch, Analytical writing (15)</p><h2>Hindi</h2>
-<p><b>Basic:</b> साहित्य + व्याकरण.</p>
-<p><b>15 Basic Q:</b> पाठ सार, शब्दार्थ (15)</p>
-<p><b>15 Advanced Q:</b> भावार्थ, निबंध (15)</p><h2>SST</h2>
-<p><b>Basic:</b> History, Civics, Economics, Geography.</p>
-<p><b>15 Basic Q:</b> Resources, Democracy, Development (15)</p>
-<p><b>15 Advanced Q:</b> Globalisation, Federalism, Map work (15)</p><h2>IT</h2>
-<p><b>Basic:</b> Digital skills.</p>
-<p><b>15 Basic Q:</b> Internet, Email, Data (15)</p>
-<p><b>15 Advanced Q:</b> Cyber security, Data handling (15)</p>
-</body></html><!-- ================= CLASS11.HTML ================= --><!DOCTYPE html><html lang="hi"><head><meta charset="UTF-8"><title>Class 11 – All Subjects</title></head>
-<body>
-<h1>Class 11 – All Subjects</h1>
-<h2>Maths</h2><p>Sets, Relations, Trigonometry | 15 Basic + 15 Advanced</p>
-<h2>Physics</h2><p>Motion, Laws, Work | 15 Basic + 15 Advanced</p>
-<h2>Chemistry</h2><p>Atomic structure, Periodic table | 15 Basic + 15 Advanced</p>
-<h2>Biology</h2><p>Cell, Biomolecules | 15 Basic + 15 Advanced</p>
-<h2>English</h2><p>Advanced grammar, Writing | 15 Basic + 15 Advanced</p>
-<h2>Computer Science</h2><p>Programming basics | 15 Basic + 15 Advanced</p>
-<h2>Physical Education</h2><p>Health, Fitness, Yoga | 15 Basic + 15 Advanced</p>
-</body></html><!-- ================= AI.HTML ================= --><!DOCTYPE html><html lang="hi"><head><meta charset="UTF-8"><title>AI – Basic to Advance</title></head>
-<body>
-<h1>Artificial Intelligence (AI)</h1><h2>🔹 AI BASIC (Foundation)</h2>
-<p><b>AI kya hai?</b> Artificial Intelligence wo technology hai jisme machine human jaisa sochne, samajhne aur decision lene ki kshamta rakhti hai.</p>
-<ul>
-<li>Examples: Google Assistant, Alexa, ChatGPT</li>
-<li>AI ka use education, health, banking, smartphone me hota hai</li>
-</ul>
-<h3>📒 Notes (Basic)</h3>
-<ul>
-<li>AI = Artificial + Intelligence</li>
-<li>AI data par kaam karta hai</li>
-<li>AI automation ko easy banata hai</li>
-</ul>
-<h3>🟢 Basic Questions (15)</h3>
-<ol>
-<li>AI kya hai?</li>
-<li>AI ka full form kya hai?</li>
-<li>AI ka ek example do</li>
-<li>Machine kya hoti hai?</li>
-<li>Data kya hota hai?</li>
-<li>AI daily life me kaha use hota hai?</li>
-<li>Chatbot kya hota hai?</li>
-<li>Voice assistant kya hai?</li>
-<li>Automation kya hota hai?</li>
-<li>AI aur computer me antar likho</li>
-<li>AI ka ek fayda likho</li>
-<li>AI ka ek nuksan likho</li>
-<li>Student ke liye AI ka use</li>
-<li>Smartphone me AI ka use</li>
-<li>Future me AI ka role</li>
-</ol><h2>🔹 AI INTERMEDIATE</h2>
-<p><b>Explanation:</b> Is level par AI data se seekhna shuru karta hai jise Machine Learning kehte hain.</p>
-<h3>📒 Notes (Intermediate)</h3>
-<ul>
-<li>Machine Learning = Machine ka data se seekhna</li>
-<li>Dataset = Training data</li>
-<li>Algorithm = Rules jinke through machine seekhti hai</li>
-</ul>
-<h3>🟢 Intermediate Questions (15)</h3>
-<ol>
-<li>Machine Learning kya hai?</li>
-<li>AI aur ML me difference</li>
-<li>Dataset kya hota hai?</li>
-<li>Training data kya hota hai?</li>
-<li>Algorithm kya hota hai?</li>
-<li>Supervised learning kya hai?</li>
-<li>Unsupervised learning kya hai?</li>
-<li>AI model kya hota hai?</li>
-<li>Data training ka matlab</li>
-<li>AI decision kaise leta hai?</li>
-<li>ML ke examples</li>
-<li>AI errors kyu karta hai?</li>
-<li>Data quality ka role</li>
-<li>ML education me kaise use hota hai?</li>
-<li>ML future scope</li>
-</ol><h2>🔹 AI ADVANCED</h2>
-<p><b>Explanation:</b> Advanced AI me Deep Learning aur Neural Network ka use hota hai jo human brain jaisa kaam karta hai.</p>
-<h3>📒 Notes (Advanced)</h3>
-<ul>
-<li>Neural Network = Human brain inspired system</li>
-<li>Deep Learning = Multi-layer learning</li>
-<li>AI Ethics = Right & wrong use of AI</li>
-</ul>
-<h3>🔵 Advanced Questions (15)</h3>
-<ol>
-<li>Neural Network kya hota hai?</li>
-<li>Deep Learning explain karo</li>
-<li>AI ethics kya hai?</li>
-<li>AI ke risks kya hain?</li>
-<li>AI jobs kaun-kaun si hain?</li>
-<li>AI healthcare me kaise use hota hai?</li>
-<li>AI education me role</li>
-<li>AI bias kya hota hai?</li>
-<li>AI aur human intelligence me antar</li>
-<li>Future of AI explain karo</li>
-<li>AI ka misuse ka example</li>
-<li>Case study: Chatbot</li>
-<li>AI aur privacy</li>
-<li>India me AI ka scope</li>
-<li>AI career roadmap</li>
-</ol></body></html>
+</html>
