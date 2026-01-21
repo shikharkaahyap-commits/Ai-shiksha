@@ -15,15 +15,12 @@ header{background:#3f51b5;color:#fff;padding:14px;text-align:center;font-size:20
   cursor:pointer;font-weight:bold
 }
 .card small{display:block;color:#666;margin-top:6px}
-
 .hidden{display:none}
-
 button{
   width:100%;padding:10px;margin:6px 0;
   border:none;border-radius:8px;
   background:#4caf50;color:white;font-size:14px
 }
-
 .section{padding:16px}
 h2{margin:6px 0}
 ul{line-height:1.7}
@@ -37,9 +34,9 @@ ul{line-height:1.7}
 <!-- HOME -->
 <div id="home" class="grid">
   <div class="card" onclick="openClass()">📚 NCERT Books<small>Class 1–12</small></div>
-  <div class="card">📝 NCERT Solutions</div>
-  <div class="card">📒 Notes</div>
-  <div class="card">🎥 Videos</div>
+  <div class="card" onclick="openSolutions()">📝 NCERT Solutions</div>
+  <div class="card" onclick="openNotes()">📒 Notes</div>
+  <div class="card" onclick="openVideos()">🎥 Videos</div>
   <div class="card" onclick="openAI()">🤖 AI Course</div>
 </div>
 
@@ -63,11 +60,9 @@ ul{line-height:1.7}
 <!-- CHAPTER -->
 <div id="chapter" class="section hidden">
   <h2>📘 Real Numbers</h2>
-
   <button onclick="showNotes()">📖 Notes</button>
   <button onclick="showBasic()">✏️ Basic Questions</button>
   <button onclick="showAdvance()">🚀 Advance Questions</button>
-
   <div id="content"></div>
 </div>
 
@@ -75,26 +70,37 @@ ul{line-height:1.7}
 <div id="ai" class="section hidden">
 <h2>🤖 Artificial Intelligence</h2>
 <ul>
-<li><b>Basic:</b> AI kya hai, Examples, Uses</li>
-<li><b>Intermediate:</b> Machine Learning, Dataset</li>
-<li><b>Advance:</b> Deep Learning, Career, Ethics</li>
+<li><b>Basic:</b> AI kya hai, Examples</li>
+<li><b>Intermediate:</b> Machine Learning</li>
+<li><b>Advance:</b> Deep Learning, Career</li>
 </ul>
 </div>
 
 <script>
+const home = document.getElementById("home")
+const cls = document.getElementById("class")
+const subject = document.getElementById("subject")
+const chapter = document.getElementById("chapter")
+const ai = document.getElementById("ai")
+const title = document.getElementById("title")
+const content = document.getElementById("content")
+
 function hideAll(){
   home.classList.add("hidden")
-  class.classList.add("hidden")
+  cls.classList.add("hidden")
   subject.classList.add("hidden")
   chapter.classList.add("hidden")
   ai.classList.add("hidden")
 }
 
-function openClass(){hideAll();class.classList.remove("hidden");title.innerText="Select Class"}
+function openClass(){hideAll();cls.classList.remove("hidden");title.innerText="Select Class"}
 function openSubject(){hideAll();subject.classList.remove("hidden");title.innerText="Select Subject"}
 function openChapter(){hideAll();chapter.classList.remove("hidden");title.innerText="Chapter"}
-
 function openAI(){hideAll();ai.classList.remove("hidden");title.innerText="AI Course"}
+
+function openSolutions(){alert("Solutions coming soon")}
+function openNotes(){alert("Notes section")}
+function openVideos(){alert("Videos section")}
 
 function showNotes(){
 content.innerHTML=`
@@ -103,20 +109,19 @@ content.innerHTML=`
 <li>Real Numbers = Rational + Irrational</li>
 <li>Rational: p/q (q≠0)</li>
 <li>Irrational: √2, π</li>
-<li>Properties: Closure, Commutative, Associative</li>
 </ul>`
 }
 
 function showBasic(){
-content.innerHTML="<h3>✏️ Basic Questions</h3><ol>"
-for(let i=1;i<=15;i++)content.innerHTML+=`<li>Basic Question ${i}</li>`
-content.innerHTML+="</ol>"
+let html="<h3>✏️ Basic Questions</h3><ol>"
+for(let i=1;i<=15;i++) html+=`<li>Basic Question ${i}</li>`
+content.innerHTML=html+"</ol>"
 }
 
 function showAdvance(){
-content.innerHTML="<h3>🚀 Advance Questions</h3><ol>"
-for(let i=1;i<=15;i++)content.innerHTML+=`<li>Advance Question ${i}</li>`
-content.innerHTML+="</ol>"
+let html="<h3>🚀 Advance Questions</h3><ol>"
+for(let i=1;i<=15;i++) html+=`<li>Advance Question ${i}</li>`
+content.innerHTML=html+"</ol>"
 }
 </script>
 
