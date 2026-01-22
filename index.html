@@ -3,51 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Shiksha – NCERT Complete Learning App</title>
+<title>AI Shiksha – NCERT Complete Learning</title>
 
 <style>
 body{margin:0;font-family:Arial;background:#f4f6fb}
 header{background:#1e40af;color:#fff;padding:14px;text-align:center;font-size:20px}
-
 .hidden{display:none}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:16px}
-.card{
- background:#fff;border-radius:14px;padding:18px;
- text-align:center;box-shadow:0 4px 10px #0001;
- font-weight:bold;cursor:pointer
-}
+.card{background:#fff;border-radius:14px;padding:18px;text-align:center;
+box-shadow:0 4px 10px #0001;font-weight:bold;cursor:pointer}
 .section{padding:16px}
-button{
- width:100%;padding:10px;margin:6px 0;
- border:none;border-radius:8px;
- background:#22c55e;color:#fff;font-size:14px
-}
+button{width:100%;padding:10px;margin:6px 0;border:none;
+border-radius:8px;background:#22c55e;color:#fff}
 .back{background:#f59e0b}
-
-/* LOGIN */
-#login{
- position:fixed;inset:0;background:#f4f6fb;
- display:flex;flex-direction:column;
- justify-content:center;align-items:center;z-index:9999
-}
-#login input,#login select{
- padding:10px;width:220px;margin:6px
-}
-
-/* CHAT */
-#chatBtn{
- position:fixed;right:16px;bottom:16px;
- background:#1e40af;color:#fff;
- padding:10px 14px;border-radius:50px;
- font-weight:bold;cursor:pointer
-}
-#chat{
- position:fixed;right:16px;bottom:70px;
- width:260px;height:300px;
- background:#fff;border-radius:14px;
- box-shadow:0 6px 18px #0004;
- display:flex;flex-direction:column
-}
+#chatBtn{position:fixed;right:16px;bottom:16px;background:#1e40af;
+color:#fff;padding:10px 14px;border-radius:50px;font-weight:bold}
+#chat{position:fixed;right:16px;bottom:70px;width:260px;height:300px;
+background:#fff;border-radius:14px;box-shadow:0 6px 18px #0004;
+display:flex;flex-direction:column}
 #chatHead{background:#1e40af;color:#fff;padding:8px}
 #chatBody{flex:1;padding:8px;overflow:auto;font-size:14px}
 #chat input{border:none;padding:8px;width:100%}
@@ -58,58 +31,51 @@ button{
 
 <body>
 
-<!-- LOGIN -->
-<div id="login">
-<h2>🔐 Student Login</h2>
-<input id="studentName" placeholder="Student Name">
-<select id="studentClass">
-<option value="">Select Class</option>
-<option>8</option><option>9</option><option>10</option>
-<option>11</option><option>12</option>
-</select>
-<button onclick="login()">Login</button>
-</div>
-
 <header>AI Shiksha – NCERT Learning</header>
 
-<!-- HOME -->
 <div id="home" class="grid">
 <div class="card" onclick="openClasses()">📚 NCERT Classes (8–12)</div>
 <div class="card" onclick="openAI()">🤖 AI Course</div>
 </div>
 
-<!-- CLASSES -->
 <div id="classes" class="grid hidden"></div>
-
-<!-- SUBJECTS -->
 <div id="subjects" class="grid hidden"></div>
 
-<!-- CHAPTER -->
 <div id="chapter" class="section hidden">
 <h2 id="chapterTitle"></h2>
-<button onclick="showNotes()">📖 Notes (Teacher Style)</button>
+<button onclick="showNotes()">📖 Chapter Explanation</button>
 <button onclick="showBasic()">✏️ 15 Basic Questions</button>
 <button onclick="showAdvance()">🚀 15 Advance Questions</button>
 <button class="back" onclick="goBack()">⬅ Back</button>
 <div id="content"></div>
 </div>
 
-<!-- AI COURSE -->
 <div id="ai" class="section hidden">
-<h2>🤖 Artificial Intelligence</h2>
+<h2>🤖 Artificial Intelligence (AI)</h2>
 <p>
-Artificial Intelligence ka matlab hai machine ko
-insaan ki tarah sochne aur decision lene ke layak banana.
+1. Artificial Intelligence ka matlab hota hai machine ko intelligent banana.<br>
+2. AI machine ko insaan ki tarah sochne aur decision lene ke layak banata hai.<br>
+3. Jaise Google Assistant, Alexa, ChatGPT – ye sab AI ke example hain.<br><br>
+
+4. Class 8 ke liye AI ka matlab sirf smart computer hota hai.<br>
+5. Class 9–10 me AI data se seekhne lagta hai, jise Machine Learning kehte hain.<br>
+6. Class 11–12 me AI image, voice aur language ko samajhne lagta hai.<br><br>
+
+7. AI ka use education me smart study ke liye hota hai.<br>
+8. AI student ke doubt clear karta hai.<br>
+9. AI teacher ki tarah explanation deta hai.<br><br>
+
+10. AI health me disease pehchanta hai.<br>
+11. AI banking me fraud pakadta hai.<br>
+12. AI cars ko khud chalne me madad karta hai.<br><br>
+
+13. AI future ka important subject hai.<br>
+14. AI career options: AI Engineer, Data Scientist, ML Engineer.<br>
+15. Aane wale time me AI har field me use hoga.
 </p>
-<ul>
-<li><b>Basic:</b> AI kya hai, real life examples</li>
-<li><b>Intermediate:</b> Machine Learning, Data</li>
-<li><b>Advance:</b> Deep Learning, AI Career</li>
-</ul>
 <button class="back" onclick="goHome()">⬅ Home</button>
 </div>
 
-<!-- CHAT -->
 <div id="chatBtn" onclick="toggleChat()">💬 Ask AI</div>
 <div id="chat" class="hidden">
 <div id="chatHead">AI Teacher</div>
@@ -119,34 +85,16 @@ onkeydown="if(event.key==='Enter')sendChat()">
 </div>
 
 <script>
-/* LOGIN */
-if(localStorage.student) loginDivHide()
-function login(){
- if(!studentName.value||!studentClass.value){
-  alert("Please fill all details");return
- }
- localStorage.student=JSON.stringify({
-  name:studentName.value,
-  class:studentClass.value
- })
- loginDivHide()
-}
-function loginDivHide(){
- document.getElementById("login").style.display="none"
-}
-
-/* AUTO DATA (NCERT STYLE) */
 const SUBJECTS={
- Maths:["Chapter 1","Chapter 2","Chapter 3","Chapter 4"],
- Science:["Chapter 1","Chapter 2","Chapter 3"],
- English:["Chapter 1","Chapter 2"],
- Hindi:["Chapter 1","Chapter 2"],
- SST:["Chapter 1","Chapter 2","Chapter 3"]
+ Maths:["Real Numbers","Polynomials","Linear Equations"],
+ Science:["Crop Production","Microorganism","Coal & Petroleum"],
+ English:["Prose","Poem","Grammar"],
+ Hindi:["Vasंत","Bal Mahabharat","Grammar"],
+ SST:["History","Geography","Civics"]
 }
 
 let currentClass="",currentSubject="",currentChapter=""
 
-/* NAVIGATION */
 function hideAll(){
  home.classList.add("hidden")
  classes.classList.add("hidden")
@@ -154,10 +102,7 @@ function hideAll(){
  chapter.classList.add("hidden")
  ai.classList.add("hidden")
 }
-
-function goHome(){
- hideAll();home.classList.remove("hidden")
-}
+function goHome(){hideAll();home.classList.remove("hidden")}
 
 function openClasses(){
  hideAll();classes.innerHTML=""
@@ -170,76 +115,51 @@ function openClasses(){
  }
  classes.classList.remove("hidden")
 }
-
 function selectClass(cls){
- currentClass=cls
- hideAll();subjects.innerHTML=""
- Object.keys(SUBJECTS).forEach(sub=>{
+ currentClass=cls;hideAll();subjects.innerHTML=""
+ Object.keys(SUBJECTS).forEach(s=>{
   let d=document.createElement("div")
-  d.className="card"
-  d.innerText=sub
-  d.onclick=()=>selectSubject(sub)
+  d.className="card";d.innerText=s
+  d.onclick=()=>selectSubject(s)
   subjects.appendChild(d)
  })
  subjects.classList.remove("hidden")
 }
-
-function selectSubject(sub){
- currentSubject=sub
+function selectSubject(s){
+ currentSubject=s
+ currentChapter=SUBJECTS[s][0]
  hideAll();chapter.classList.remove("hidden")
- currentChapter=SUBJECTS[sub][0]
  updateChapter()
 }
+function goBack(){selectClass(currentClass)}
 
-function goBack(){
- selectClass(currentClass)
-}
-
-/* CONTENT */
 function updateChapter(){
- chapterTitle.innerText=
- `Class ${currentClass} – ${currentSubject} – ${currentChapter}`
+ chapterTitle.innerText=`Class ${currentClass} – ${currentSubject} – ${currentChapter}`
  showNotes()
 }
-
 function showNotes(){
- content.innerHTML=
- `<p><b>${currentChapter}</b> ko
- ek teacher jaise basic se explain kiya gaya hai,
- definitions, examples aur tips ke saath.</p>`
+ content.innerHTML=`
+ <p><b>${currentChapter}</b> is chapter me hum basic concept se shuru karte hain.
+ Isme definition, example aur real life use bataya jata hai.
+ Student ko exam ke liye strong base milta hai.</p>`
 }
-
 function showBasic(){
  content.innerHTML="<ol>"+
- Array.from({length:15},(_,i)=>
- `<li>Basic Question ${i+1} (${currentChapter})</li>`
- ).join("")+"</ol>"
+ Array.from({length:15},(_,i)=>`<li>${currentChapter} ka basic question ${i+1}</li>`).join("")
+ +"</ol>"
 }
-
 function showAdvance(){
  content.innerHTML="<ol>"+
- Array.from({length:15},(_,i)=>
- `<li>Advance Question ${i+1} (${currentChapter})</li>`
- ).join("")+"</ol>"
+ Array.from({length:15},(_,i)=>`<li>${currentChapter} ka exam level question ${i+1}</li>`).join("")
+ +"</ol>"
 }
-
-/* AI */
-function openAI(){
- hideAll();ai.classList.remove("hidden")
-}
-
-/* CHAT */
-function toggleChat(){
- chat.classList.toggle("hidden")
-}
+function openAI(){hideAll();ai.classList.remove("hidden")}
+function toggleChat(){chat.classList.toggle("hidden")}
 function sendChat(){
  if(!chatMsg.value)return
  chatBody.innerHTML+=`<div class="user">${chatMsg.value}</div>`
- chatBody.innerHTML+=
- `<div class="bot">Teacher: Is sawal ka jawab
- chapter ke concept par based hoga.</div>`
+ chatBody.innerHTML+=`<div class="bot">Teacher: Is question ka jawab concept se diya jayega.</div>`
  chatMsg.value=""
- chatBody.scrollTop=chatBody.scrollHeight
 }
 </script>
 
