@@ -3,214 +3,242 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Shiksha – NCERT Complete App</title>
+<title>AI Shiksha – NCERT Complete Learning App</title>
 
 <style>
 body{margin:0;font-family:Arial;background:#f4f6fb}
-header{background:#3f51b5;color:#fff;padding:14px;text-align:center;font-size:20px}
-
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:16px}
-.card{background:#fff;border-radius:14px;padding:18px;text-align:center;
-box-shadow:0 4px 10px #0001;font-weight:bold;cursor:pointer}
+header{background:#1e40af;color:#fff;padding:14px;text-align:center;font-size:20px}
 
 .hidden{display:none}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:16px}
+.card{
+ background:#fff;border-radius:14px;padding:18px;
+ text-align:center;box-shadow:0 4px 10px #0001;
+ font-weight:bold;cursor:pointer
+}
 .section{padding:16px}
-button{width:100%;padding:10px;margin:6px 0;border:none;border-radius:8px;
-background:#4caf50;color:#fff;font-size:14px}
-.back{background:#ff9800}
+button{
+ width:100%;padding:10px;margin:6px 0;
+ border:none;border-radius:8px;
+ background:#22c55e;color:#fff;font-size:14px
+}
+.back{background:#f59e0b}
 
 /* LOGIN */
-#loginPage{
+#login{
  position:fixed;inset:0;background:#f4f6fb;
  display:flex;flex-direction:column;
  justify-content:center;align-items:center;z-index:9999
 }
-#loginPage input,#loginPage select{padding:10px;width:220px;margin:6px}
+#login input,#login select{
+ padding:10px;width:220px;margin:6px
+}
 
 /* CHAT */
 #chatBtn{
- position:fixed;bottom:20px;right:20px;
- background:#3f51b5;color:#fff;
+ position:fixed;right:16px;bottom:16px;
+ background:#1e40af;color:#fff;
  padding:10px 14px;border-radius:50px;
- font-weight:bold;cursor:pointer;z-index:999
+ font-weight:bold;cursor:pointer
 }
-#aiChat{
- position:fixed;bottom:80px;right:20px;
- width:280px;height:360px;
+#chat{
+ position:fixed;right:16px;bottom:70px;
+ width:260px;height:300px;
  background:#fff;border-radius:14px;
  box-shadow:0 6px 18px #0004;
- display:flex;flex-direction:column;z-index:999
+ display:flex;flex-direction:column
 }
-.chatHeader{background:#3f51b5;color:#fff;padding:8px;
-display:flex;justify-content:space-between}
+#chatHead{background:#1e40af;color:#fff;padding:8px}
 #chatBody{flex:1;padding:8px;overflow:auto;font-size:14px}
-.chatInput{display:flex}
-.chatInput input{flex:1;padding:8px;border:none}
-.chatInput button{background:#4caf50;border:none;color:#fff;padding:8px}
-.user{font-weight:bold;margin:4px 0}
-.bot{color:#3f51b5;margin:4px 0}
+#chat input{border:none;padding:8px;width:100%}
+.user{font-weight:bold}
+.bot{color:#1e40af}
 </style>
 </head>
 
 <body>
 
 <!-- LOGIN -->
-<div id="loginPage">
-  <h2>🔐 Student Login</h2>
-  <input id="stuName" placeholder="Student Name">
-  <select id="stuClass">
-    <option value="">Select Class</option>
-    <option>8</option><option>9</option><option>10</option>
-    <option>11</option><option>12</option>
-  </select>
-  <button onclick="login()">Login</button>
+<div id="login">
+<h2>🔐 Student Login</h2>
+<input id="studentName" placeholder="Student Name">
+<select id="studentClass">
+<option value="">Select Class</option>
+<option>8</option><option>9</option><option>10</option>
+<option>11</option><option>12</option>
+</select>
+<button onclick="login()">Login</button>
 </div>
 
-<header id="title">AI Shiksha – NCERT Learning</header>
+<header>AI Shiksha – NCERT Learning</header>
 
 <!-- HOME -->
 <div id="home" class="grid">
-  <div class="card" onclick="openClass()">📚 NCERT Classes (8–12)</div>
-  <div class="card" onclick="openAI()">🤖 AI Course</div>
+<div class="card" onclick="openClasses()">📚 NCERT Classes (8–12)</div>
+<div class="card" onclick="openAI()">🤖 AI Course</div>
 </div>
 
-<!-- CLASS -->
-<div id="class" class="grid hidden"></div>
+<!-- CLASSES -->
+<div id="classes" class="grid hidden"></div>
 
-<!-- SUBJECT -->
-<div id="subject" class="grid hidden"></div>
+<!-- SUBJECTS -->
+<div id="subjects" class="grid hidden"></div>
 
 <!-- CHAPTER -->
 <div id="chapter" class="section hidden">
-  <h2 id="chapterTitle"></h2>
-  <button onclick="showTheory()">📖 Notes / Theory</button>
-  <button onclick="showBasic()">✏️ 15 Basic Questions</button>
-  <button onclick="showAdvance()">🚀 15 Advance Questions</button>
-  <button class="back" onclick="goBack()">⬅ Back</button>
-  <div id="content"></div>
+<h2 id="chapterTitle"></h2>
+<button onclick="showNotes()">📖 Notes (Teacher Style)</button>
+<button onclick="showBasic()">✏️ 15 Basic Questions</button>
+<button onclick="showAdvance()">🚀 15 Advance Questions</button>
+<button class="back" onclick="goBack()">⬅ Back</button>
+<div id="content"></div>
 </div>
 
 <!-- AI COURSE -->
 <div id="ai" class="section hidden">
 <h2>🤖 Artificial Intelligence</h2>
 <p>
-Artificial Intelligence ka matlab hai machine ko insan ki tarah
-sochne aur decision lene ke layak banana.
+Artificial Intelligence ka matlab hai machine ko
+insaan ki tarah sochne aur decision lene ke layak banana.
 </p>
 <ul>
-<li><b>Basic:</b> AI kya hai, examples</li>
-<li><b>Intermediate:</b> Machine Learning</li>
-<li><b>Advance:</b> Deep Learning, Career</li>
+<li><b>Basic:</b> AI kya hai, real life examples</li>
+<li><b>Intermediate:</b> Machine Learning, Data</li>
+<li><b>Advance:</b> Deep Learning, AI Career</li>
 </ul>
 <button class="back" onclick="goHome()">⬅ Home</button>
 </div>
 
 <!-- CHAT -->
-<div id="chatBtn" onclick="openChat()">💬 Ask AI</div>
-
-<div id="aiChat" class="hidden">
-  <div class="chatHeader">
-    AI Teacher <span onclick="closeChat()">✖</span>
-  </div>
-  <div id="chatBody"></div>
-  <div class="chatInput">
-    <input id="userMsg" placeholder="Question likho...">
-    <button onclick="sendMsg()">Send</button>
-  </div>
+<div id="chatBtn" onclick="toggleChat()">💬 Ask AI</div>
+<div id="chat" class="hidden">
+<div id="chatHead">AI Teacher</div>
+<div id="chatBody"></div>
+<input id="chatMsg" placeholder="Question likho..."
+onkeydown="if(event.key==='Enter')sendChat()">
 </div>
 
 <script>
 /* LOGIN */
-if(localStorage.getItem("student"))
- loginPage.style.display="none"
+if(localStorage.student) loginDivHide()
 function login(){
- if(!stuName.value||!stuClass.value) return alert("Fill all details")
- localStorage.setItem("student",JSON.stringify({
-  name:stuName.value,class:stuClass.value}))
- loginPage.style.display="none"
-}
-
-/* DATA */
-const DATA={
-"8":{"Maths":{"Real Numbers":make("Real Numbers")}},
-"9":{"Maths":{"Number System":make("Number System")}},
-"10":{"Maths":{"Real Numbers":make("Real Numbers")}},
-"11":{"Maths":{"Sets":make("Sets")}},
-"12":{"Maths":{"Relations":make("Relations")}}
-}
-function make(name){
- return{
-  theory:`${name} ko basic se teacher style me explain kiya gaya hai.`,
-  basic:Array.from({length:15},(_,i)=>`Basic Q${i+1}: ${name}`),
-  advance:Array.from({length:15},(_,i)=>`Advance Q${i+1}: ${name}`)
+ if(!studentName.value||!studentClass.value){
+  alert("Please fill all details");return
  }
+ localStorage.student=JSON.stringify({
+  name:studentName.value,
+  class:studentClass.value
+ })
+ loginDivHide()
+}
+function loginDivHide(){
+ document.getElementById("login").style.display="none"
 }
 
-/* NAV */
-const homeDiv=home,clsDiv=class,subDiv=subject,chapDiv=chapter
-let C="",S="",CH=""
+/* AUTO DATA (NCERT STYLE) */
+const SUBJECTS={
+ Maths:["Chapter 1","Chapter 2","Chapter 3","Chapter 4"],
+ Science:["Chapter 1","Chapter 2","Chapter 3"],
+ English:["Chapter 1","Chapter 2"],
+ Hindi:["Chapter 1","Chapter 2"],
+ SST:["Chapter 1","Chapter 2","Chapter 3"]
+}
+
+let currentClass="",currentSubject="",currentChapter=""
+
+/* NAVIGATION */
 function hideAll(){
- homeDiv.classList.add("hidden")
- clsDiv.classList.add("hidden")
- subDiv.classList.add("hidden")
- chapDiv.classList.add("hidden")
+ home.classList.add("hidden")
+ classes.classList.add("hidden")
+ subjects.classList.add("hidden")
+ chapter.classList.add("hidden")
  ai.classList.add("hidden")
 }
-function goHome(){hideAll();homeDiv.classList.remove("hidden")}
-function openClass(){
- hideAll();clsDiv.innerHTML=""
+
+function goHome(){
+ hideAll();home.classList.remove("hidden")
+}
+
+function openClasses(){
+ hideAll();classes.innerHTML=""
  for(let i=8;i<=12;i++){
   let d=document.createElement("div")
-  d.className="card";d.innerText="Class "+i
+  d.className="card"
+  d.innerText="Class "+i
   d.onclick=()=>selectClass(i)
-  clsDiv.appendChild(d)
+  classes.appendChild(d)
  }
- clsDiv.classList.remove("hidden")
+ classes.classList.remove("hidden")
 }
-function selectClass(c){
- C=c;hideAll();subDiv.innerHTML=""
- Object.keys(DATA[c]).forEach(s=>{
+
+function selectClass(cls){
+ currentClass=cls
+ hideAll();subjects.innerHTML=""
+ Object.keys(SUBJECTS).forEach(sub=>{
   let d=document.createElement("div")
-  d.className="card";d.innerText=s
-  d.onclick=()=>openSubject(s)
-  subDiv.appendChild(d)
+  d.className="card"
+  d.innerText=sub
+  d.onclick=()=>selectSubject(sub)
+  subjects.appendChild(d)
  })
- subDiv.classList.remove("hidden")
+ subjects.classList.remove("hidden")
 }
-function openSubject(s){
- S=s;hideAll();chapDiv.innerHTML=""
- Object.keys(DATA[C][S]).forEach(ch=>{
-  let b=document.createElement("button")
-  b.innerText=ch;b.onclick=()=>openChapter(ch)
-  chapDiv.appendChild(b)
- })
- chapDiv.classList.remove("hidden")
+
+function selectSubject(sub){
+ currentSubject=sub
+ hideAll();chapter.classList.remove("hidden")
+ currentChapter=SUBJECTS[sub][0]
+ updateChapter()
 }
-function openChapter(ch){
- CH=ch
- chapterTitle.innerText=`Class ${C} – ${S} – ${CH}`
- showTheory()
+
+function goBack(){
+ selectClass(currentClass)
 }
-function goBack(){openSubject(S)}
-function showTheory(){
- content.innerHTML="<p>"+DATA[C][S][CH].theory+"</p>"
+
+/* CONTENT */
+function updateChapter(){
+ chapterTitle.innerText=
+ `Class ${currentClass} – ${currentSubject} – ${currentChapter}`
+ showNotes()
 }
+
+function showNotes(){
+ content.innerHTML=
+ `<p><b>${currentChapter}</b> ko
+ ek teacher jaise basic se explain kiya gaya hai,
+ definitions, examples aur tips ke saath.</p>`
+}
+
 function showBasic(){
- content.innerHTML="<ol>"+DATA[C][S][CH].basic.map(q=>`<li>${q}</li>`).join("")+"</ol>"
+ content.innerHTML="<ol>"+
+ Array.from({length:15},(_,i)=>
+ `<li>Basic Question ${i+1} (${currentChapter})</li>`
+ ).join("")+"</ol>"
 }
+
 function showAdvance(){
- content.innerHTML="<ol>"+DATA[C][S][CH].advance.map(q=>`<li>${q}</li>`).join("")+"</ol>"
+ content.innerHTML="<ol>"+
+ Array.from({length:15},(_,i)=>
+ `<li>Advance Question ${i+1} (${currentChapter})</li>`
+ ).join("")+"</ol>"
 }
-function openAI(){hideAll();ai.classList.remove("hidden")}
+
+/* AI */
+function openAI(){
+ hideAll();ai.classList.remove("hidden")
+}
 
 /* CHAT */
-function openChat(){aiChat.classList.remove("hidden")}
-function closeChat(){aiChat.classList.add("hidden")}
-function sendMsg(){
- let m=userMsg.value.trim();if(!m)return
- chatBody.innerHTML+=`<div class="user">${m}</div>`
- chatBody.innerHTML+=`<div class="bot">Teacher: ${m} ka jawab yahan milega.</div>`
- userMsg.value=""
+function toggleChat(){
+ chat.classList.toggle("hidden")
+}
+function sendChat(){
+ if(!chatMsg.value)return
+ chatBody.innerHTML+=`<div class="user">${chatMsg.value}</div>`
+ chatBody.innerHTML+=
+ `<div class="bot">Teacher: Is sawal ka jawab
+ chapter ke concept par based hoga.</div>`
+ chatMsg.value=""
  chatBody.scrollTop=chatBody.scrollHeight
 }
 </script>
