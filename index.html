@@ -3,39 +3,74 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Shiksha – Complete NCERT Learning</title>
+<title>AI Shiksha – NCERT Complete App</title>
+
 <style>
 body{margin:0;font-family:Arial;background:#f4f6fb}
 header{background:#3f51b5;color:#fff;padding:14px;text-align:center;font-size:20px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:16px}
-.card{background:#fff;border-radius:14px;padding:18px;text-align:center;box-shadow:0 4px 10px #0001;cursor:pointer;font-weight:bold}
-.card small{display:block;color:#666;margin-top:6px}
-.hidden{display:none}
-button{width:100%;padding:10px;margin:6px 0;border:none;border-radius:8px;background:#4caf50;color:white;font-size:14px}
-.section{padding:16px}
-h2,h3{margin:8px 0}
-ul,ol{line-height:1.7}
-.back{background:#ff9800;color:#fff;}
 
-/* CHAT - small fixed */
-#chatBtn{position:fixed;bottom:20px;right:20px;background:#3f51b5;color:#fff;padding:12px 16px;border-radius:50px;font-weight:bold;cursor:pointer;z-index:999;}
-#aiChat{position:fixed;bottom:80px;right:20px;width:280px;height:360px;background:#fff;border-radius:14px;box-shadow:0 6px 18px #0004;display:flex;flex-direction:column;z-index:999;}
-.chatHeader{background:#3f51b5;color:#fff;padding:10px;font-weight:bold;display:flex;justify-content:space-between;}
-#chatBody{flex:1;padding:10px;overflow:auto;background:#f9f9f9;font-size:14px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:16px}
+.card{background:#fff;border-radius:14px;padding:18px;text-align:center;
+box-shadow:0 4px 10px #0001;font-weight:bold;cursor:pointer}
+
+.hidden{display:none}
+.section{padding:16px}
+button{width:100%;padding:10px;margin:6px 0;border:none;border-radius:8px;
+background:#4caf50;color:#fff;font-size:14px}
+.back{background:#ff9800}
+
+/* LOGIN */
+#loginPage{
+ position:fixed;inset:0;background:#f4f6fb;
+ display:flex;flex-direction:column;
+ justify-content:center;align-items:center;z-index:9999
+}
+#loginPage input,#loginPage select{padding:10px;width:220px;margin:6px}
+
+/* CHAT */
+#chatBtn{
+ position:fixed;bottom:20px;right:20px;
+ background:#3f51b5;color:#fff;
+ padding:10px 14px;border-radius:50px;
+ font-weight:bold;cursor:pointer;z-index:999
+}
+#aiChat{
+ position:fixed;bottom:80px;right:20px;
+ width:280px;height:360px;
+ background:#fff;border-radius:14px;
+ box-shadow:0 6px 18px #0004;
+ display:flex;flex-direction:column;z-index:999
+}
+.chatHeader{background:#3f51b5;color:#fff;padding:8px;
+display:flex;justify-content:space-between}
+#chatBody{flex:1;padding:8px;overflow:auto;font-size:14px}
 .chatInput{display:flex}
-.chatInput input{flex:1;border:none;padding:10px;border-radius:4px}
-.chatInput button{border:none;background:#4caf50;color:#fff;padding:10px;border-radius:4px}
-.user{margin:6px 0;font-weight:bold}
-.bot{margin:6px 0;color:#3f51b5}
+.chatInput input{flex:1;padding:8px;border:none}
+.chatInput button{background:#4caf50;border:none;color:#fff;padding:8px}
+.user{font-weight:bold;margin:4px 0}
+.bot{color:#3f51b5;margin:4px 0}
 </style>
 </head>
+
 <body>
+
+<!-- LOGIN -->
+<div id="loginPage">
+  <h2>🔐 Student Login</h2>
+  <input id="stuName" placeholder="Student Name">
+  <select id="stuClass">
+    <option value="">Select Class</option>
+    <option>8</option><option>9</option><option>10</option>
+    <option>11</option><option>12</option>
+  </select>
+  <button onclick="login()">Login</button>
+</div>
 
 <header id="title">AI Shiksha – NCERT Learning</header>
 
 <!-- HOME -->
 <div id="home" class="grid">
-  <div class="card" onclick="openClass()">📚 NCERT Classes<small>Class 8–12</small></div>
+  <div class="card" onclick="openClass()">📚 NCERT Classes (8–12)</div>
   <div class="card" onclick="openAI()">🤖 AI Course</div>
 </div>
 
@@ -48,7 +83,7 @@ ul,ol{line-height:1.7}
 <!-- CHAPTER -->
 <div id="chapter" class="section hidden">
   <h2 id="chapterTitle"></h2>
-  <button onclick="showTheory()">📖 Theory / Notes</button>
+  <button onclick="showTheory()">📖 Notes / Theory</button>
   <button onclick="showBasic()">✏️ 15 Basic Questions</button>
   <button onclick="showAdvance()">🚀 15 Advance Questions</button>
   <button class="back" onclick="goBack()">⬅ Back</button>
@@ -58,76 +93,127 @@ ul,ol{line-height:1.7}
 <!-- AI COURSE -->
 <div id="ai" class="section hidden">
 <h2>🤖 Artificial Intelligence</h2>
-<p>Artificial Intelligence ka matlab hai machine ko intelligent banana, taaki wo human jaise soch aur decision le sake.</p>
+<p>
+Artificial Intelligence ka matlab hai machine ko insan ki tarah
+sochne aur decision lene ke layak banana.
+</p>
 <ul>
-<li><b>Basic:</b> AI kya hai, Examples (Google Assistant, ChatGPT)</li>
-<li><b>Intermediate:</b> Machine Learning – Data se seekhna</li>
-<li><b>Advance:</b> Deep Learning, Neural Networks, Career options</li>
+<li><b>Basic:</b> AI kya hai, examples</li>
+<li><b>Intermediate:</b> Machine Learning</li>
+<li><b>Advance:</b> Deep Learning, Career</li>
 </ul>
 <button class="back" onclick="goHome()">⬅ Home</button>
 </div>
 
 <!-- CHAT -->
-<div id="chatBtn" onclick="toggleChat()">💬 Ask AI</div>
+<div id="chatBtn" onclick="openChat()">💬 Ask AI</div>
+
 <div id="aiChat" class="hidden">
-  <div class="chatHeader">🤖 AI Chat <span onclick="toggleChat()" style="cursor:pointer;">✖</span></div>
-  <select id="chatSubject">
-    <option value="maths">📘 Maths</option>
-    <option value="science">🔬 Science</option>
-    <option value="hindi">📝 Hindi</option>
-    <option value="english">📖 English</option>
-    <option value="sst">🌏 SST</option>
-    <option value="ai">🤖 AI</option>
-  </select>
+  <div class="chatHeader">
+    AI Teacher <span onclick="closeChat()">✖</span>
+  </div>
   <div id="chatBody"></div>
   <div class="chatInput">
-    <input id="userMsg" placeholder="Sawal likho..." />
+    <input id="userMsg" placeholder="Question likho...">
     <button onclick="sendMsg()">Send</button>
   </div>
 </div>
 
 <script>
-// GLOBAL
-const home=document.getElementById("home"), cls=document.getElementById("class"), subject=document.getElementById("subject"), chapter=document.getElementById("chapter"), ai=document.getElementById("ai"), title=document.getElementById("title"), content=document.getElementById("content"), chapterTitle=document.getElementById("chapterTitle")
-let currentClass="", currentSubject="", currentChapter=""
+/* LOGIN */
+if(localStorage.getItem("student"))
+ loginPage.style.display="none"
+function login(){
+ if(!stuName.value||!stuClass.value) return alert("Fill all details")
+ localStorage.setItem("student",JSON.stringify({
+  name:stuName.value,class:stuClass.value}))
+ loginPage.style.display="none"
+}
 
-// FULL DATA SAMPLE - Class 8–10 included, baaki add similar
+/* DATA */
 const DATA={
-"8":{
-"Maths":{"Real Numbers":{theory:"Real numbers wo numbers hote hain jo number line par hote hain.",basic:Array.from({length:15},(_,i)=>`Basic Q${i+1}: Real numbers concept.`),advance:Array.from({length:15},(_,i)=>`Advance Q${i+1}: Real numbers application.`})}},
-"Science":{"Force & Motion":{theory:"Force aur Motion ke basic principles.",basic:Array.from({length:15},(_,i)=>`Basic Q${i+1}: Force & Motion.`),advance:Array.from({length:15},(_,i)=>`Advance Q${i+1}: Force & Motion application.`})}},
-"Hindi":{"Chapter 1":{theory:"Hindi ka chapter 1 notes.",basic:Array.from({length:15},(_,i)=>`Basic Q${i+1}: Hindi.`),advance:Array.from({length:15},(_,i)=>`Advance Q${i+1}: Hindi.`})}}
-},
-"9":{
-"Maths":{"Algebra":{theory:"Algebra basic equations aur expressions.",basic:Array.from({length:15},(_,i)=>`Basic Q${i+1}: Algebra.`),advance:Array.from({length:15},(_,i)=>`Advance Q${i+1}: Algebra application.`})}},
-"Science":{"Photosynthesis":{theory:"Photosynthesis process explanation.",basic:Array.from({length:15},(_,i)=>`Basic Q${i+1}: Photosynthesis.`),advance:Array.from({length:15},(_,i)=>`Advance Q${i+1}: Photosynthesis application.`})}},
-"Hindi":{"Chapter 1":{theory:"Hindi ka chapter 1 notes.",basic:Array.from({length:15},(_,i)=>`Basic Q${i+1}: Hindi.`),advance:Array.from({length:15},(_,i)=>`Advance Q${i+1}: Hindi.`})}}
-},
-"10":{
-"Maths":{"Geometry":{theory:"Geometry basic concepts aur theorems.",basic:Array.from({length:15},(_,i)=>`Basic Q${i+1}: Geometry.`),advance:Array.from({length:15},(_,i)=>`Advance Q${i+1}: Geometry application.`})}},
-"Science":{"Cell":{theory:"Cell ka structure aur function.",basic:Array.from({length:15},(_,i)=>`Basic Q${i+1}: Cell.`),advance:Array.from({length:15},(_,i)=>`Advance Q${i+1}: Cell application.`})}},
-"Hindi":{"Chapter 1":{theory:"Hindi ka chapter 1 notes.",basic:Array.from({length:15},(_,i)=>`Basic Q${i+1}: Hindi.`),advance:Array.from({length:15},(_,i)=>`Advance Q${i+1}: Hindi.`})}}
+"8":{"Maths":{"Real Numbers":make("Real Numbers")}},
+"9":{"Maths":{"Number System":make("Number System")}},
+"10":{"Maths":{"Real Numbers":make("Real Numbers")}},
+"11":{"Maths":{"Sets":make("Sets")}},
+"12":{"Maths":{"Relations":make("Relations")}}
 }
+function make(name){
+ return{
+  theory:`${name} ko basic se teacher style me explain kiya gaya hai.`,
+  basic:Array.from({length:15},(_,i)=>`Basic Q${i+1}: ${name}`),
+  advance:Array.from({length:15},(_,i)=>`Advance Q${i+1}: ${name}`)
+ }
 }
 
-// FUNCTIONS
-function hideAll(){home.classList.add("hidden");cls.classList.add("hidden");subject.classList.add("hidden");chapter.classList.add("hidden");ai.classList.add("hidden")}
-function goHome(){hideAll();home.classList.remove("hidden")}
-function openClass(){hideAll();cls.innerHTML="";cls.classList.remove("hidden");for(let i=8;i<=12;i++){let div=document.createElement("div");div.className="card";div.innerText="Class "+i;div.onclick=()=>selectClass(i);cls.appendChild(div)}}
-function selectClass(c){currentClass=c;hideAll();showSubjects()}
-function showSubjects(){subject.innerHTML="";const subs=Object.keys(DATA[currentClass]||{});subs.forEach(sub=>{let div=document.createElement("div");div.className="card";div.innerText=sub;div.onclick=()=>showChapters(sub);subject.appendChild(div)});subject.classList.remove("hidden");title.innerText="Class "+currentClass+" – Select Subject"}
-function showChapters(sub){currentSubject=sub;chapter.innerHTML="";chapter.classList.remove("hidden");title.innerText="Class "+currentClass+" – "+currentSubject;Object.keys(DATA[currentClass][sub]||{}).forEach(ch=>{let btn=document.createElement("button");btn.innerText=ch;btn.onclick=()=>selectChapter(ch);chapter.appendChild(btn)})}
-function selectChapter(ch){currentChapter=ch;content.innerHTML="<h3>Theory / Notes</h3><p>"+DATA[currentClass][currentSubject][ch].theory+"</p>";chapterTitle.innerText=`Class ${currentClass} – ${currentSubject} – ${ch}`}
-function goBack(){showSubjects()}
-function openAI(){hideAll();ai.classList.remove("hidden");title.innerText="AI Course"}
-function showTheory(){content.innerHTML="<h3>Theory / Notes</h3><p>"+DATA[currentClass][currentSubject][currentChapter].theory+"</p>"}
-function showBasic(){content.innerHTML="<ol>"+DATA[currentClass][currentSubject][currentChapter].basic.map(q=>`<li>${q}</li>`).join("")+"</ol>"}
-function showAdvance(){content.innerHTML="<ol>"+DATA[currentClass][currentSubject][currentChapter].advance.map(q=>`<li>${q}</li>`).join("")+"</ol>"}
+/* NAV */
+const homeDiv=home,clsDiv=class,subDiv=subject,chapDiv=chapter
+let C="",S="",CH=""
+function hideAll(){
+ homeDiv.classList.add("hidden")
+ clsDiv.classList.add("hidden")
+ subDiv.classList.add("hidden")
+ chapDiv.classList.add("hidden")
+ ai.classList.add("hidden")
+}
+function goHome(){hideAll();homeDiv.classList.remove("hidden")}
+function openClass(){
+ hideAll();clsDiv.innerHTML=""
+ for(let i=8;i<=12;i++){
+  let d=document.createElement("div")
+  d.className="card";d.innerText="Class "+i
+  d.onclick=()=>selectClass(i)
+  clsDiv.appendChild(d)
+ }
+ clsDiv.classList.remove("hidden")
+}
+function selectClass(c){
+ C=c;hideAll();subDiv.innerHTML=""
+ Object.keys(DATA[c]).forEach(s=>{
+  let d=document.createElement("div")
+  d.className="card";d.innerText=s
+  d.onclick=()=>openSubject(s)
+  subDiv.appendChild(d)
+ })
+ subDiv.classList.remove("hidden")
+}
+function openSubject(s){
+ S=s;hideAll();chapDiv.innerHTML=""
+ Object.keys(DATA[C][S]).forEach(ch=>{
+  let b=document.createElement("button")
+  b.innerText=ch;b.onclick=()=>openChapter(ch)
+  chapDiv.appendChild(b)
+ })
+ chapDiv.classList.remove("hidden")
+}
+function openChapter(ch){
+ CH=ch
+ chapterTitle.innerText=`Class ${C} – ${S} – ${CH}`
+ showTheory()
+}
+function goBack(){openSubject(S)}
+function showTheory(){
+ content.innerHTML="<p>"+DATA[C][S][CH].theory+"</p>"
+}
+function showBasic(){
+ content.innerHTML="<ol>"+DATA[C][S][CH].basic.map(q=>`<li>${q}</li>`).join("")+"</ol>"
+}
+function showAdvance(){
+ content.innerHTML="<ol>"+DATA[C][S][CH].advance.map(q=>`<li>${q}</li>`).join("")+"</ol>"
+}
+function openAI(){hideAll();ai.classList.remove("hidden")}
 
-// CHAT
-function toggleChat(){document.getElementById('aiChat').classList.toggle('hidden')}
-function sendMsg(){let m=document.getElementById('userMsg').value.trim();if(!m)return;document.getElementById('chatBody').innerHTML+=`<div class="user">${m}</div>`;document.getElementById('chatBody').innerHTML+=`<div class="bot">${aiReply(m)}</div>`;document.getElementById('userMsg').value="";document.getElementById('chatBody').scrollTop=document.getElementById('chatBody').scrollHeight}
-function aiReply(q){let s=document.getElementById('chatSubject').value; q=q.toLowerCase(); if(s==="maths") return "Maths Teacher: Topic batao jaise Real Numbers, Algebra."; if(s==="science") return "Science Teacher: Topic specify karo."; if(s==="hindi") return "Hindi Teacher: Sawal poochho."; if(s==="english") return "English Teacher: Topic poochho."; if(s==="sst") return "SST Teacher: Topic specify."; if(s==="ai") return "AI Teacher: AI, ML, Deep Learning se related poochho."; return "Teacher: Sawal samajh nahi aaya."}
+/* CHAT */
+function openChat(){aiChat.classList.remove("hidden")}
+function closeChat(){aiChat.classList.add("hidden")}
+function sendMsg(){
+ let m=userMsg.value.trim();if(!m)return
+ chatBody.innerHTML+=`<div class="user">${m}</div>`
+ chatBody.innerHTML+=`<div class="bot">Teacher: ${m} ka jawab yahan milega.</div>`
+ userMsg.value=""
+ chatBody.scrollTop=chatBody.scrollHeight
+}
 </script>
+
 </body>
 </html>
