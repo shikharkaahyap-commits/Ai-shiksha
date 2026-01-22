@@ -1,119 +1,160 @@
-<!DOCTYPE html><html lang="hi">
+AI SHIKSHA – Premium NCERT Education App (WORKING DEMO)
+
+> ⚠️ NOTE (IMPORTANT): Class 8–12 ka poora syllabus bahut bada hota hai (1000+ pages). Isliye yeh REAL WORKING LOGIC + SAMPLE CONTENT hai. Isi structure par tum unlimited chapters, PDFs, questions add kar sakte ho.
+
+
+
+
+---
+
+📂 FILE STRUCTURE (GitHub Ready)
+
+ai-shiksha/
+│
+├── index.html      (Main App – clickable)
+├── style.css       (Design)
+├── app.js          (Logic)
+├── data/
+│   ├── class8_math.json
+│   └── class8_science.json
+└── pdf/
+    └── demo.pdf
+
+
+---
+
+✅ 1️⃣ index.html (CLICKABLE UI)
+
+<!DOCTYPE html>
+<html lang="hi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI SHIKSHA i+ | NCERT Class 8–12 (All Subjects)</title>
-  <meta name="description" content="AI SHIKSHA i+ – NCERT Class 8–12 All Subjects. Notes, PDFs, Examples, Diagrams & AI Tutor." />
-  <style>
-    :root{
-      --bg:#0b1220; --card:#111a2e; --pri:#4f7cff; --sec:#22c55e; --txt:#e5e7eb; --mut:#94a3b8;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:linear-gradient(180deg,#0b1220,#0e1730);color:var(--txt)}
-    header{position:sticky;top:0;z-index:10;background:#0b1220d9;backdrop-filter:blur(8px);border-bottom:1px solid #1f2a44}
-    .wrap{max-width:1200px;margin:auto;padding:16px}
-    .row{display:flex;gap:12px;align-items:center;justify-content:space-between}
-    .logo{display:flex;gap:10px;align-items:center;font-weight:800}
-    .logo span{color:var(--pri)}
-    nav a{color:var(--mut);text-decoration:none;margin:0 8px;font-weight:600}
-    nav a:hover{color:#fff}
-    .btn{background:var(--pri);color:#fff;border:none;border-radius:12px;padding:10px 14px;font-weight:700;cursor:pointer}
-    .btn.ghost{background:transparent;border:1px solid #2a3a66}
-    .hero{padding:48px 0}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-    .card{background:linear-gradient(180deg,#111a2e,#0f1730);border:1px solid #1f2a44;border-radius:18px;padding:16px;box-shadow:0 10px 30px #00000055}
-    .tag{display:inline-block;background:#1b2a55;color:#c7d2fe;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:700}
-    h1{font-size:42px;margin:12px 0}
-    h2{font-size:26px;margin:8px 0}
-    h3{margin:6px 0}
-    p{color:#cbd5e1}
-    .subjects .item{display:flex;gap:10px;align-items:center}
-    .pill{border:1px dashed #2a3a66;border-radius:12px;padding:8px 10px;color:#cbd5e1}
-    footer{border-top:1px solid #1f2a44;margin-top:40px}
-    .kbd{background:#0b1220;border:1px solid #2a3a66;border-radius:8px;padding:4px 8px}
-    .ai{background:linear-gradient(180deg,#0b1220,#0f1730)}
-    .list{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
-    .list a{color:#cbd5e1;text-decoration:none;border:1px solid #2a3a66;border-radius:12px;padding:10px}
-    .list a:hover{border-color:var(--pri);color:#fff}
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Shiksha – NCERT Class 8–12</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <div class="wrap row">
-      <div class="logo">🤖 <span>AI SHIKSHA</span> i+</div>
-      <nav>
-        <a href="#home">Home</a>
-        <a href="#classes">Classes</a>
-        <a href="#subjects">Subjects</a>
-        <a href="#ai">AI Tutor</a>
-        <a href="#pdf">PDF</a>
-      </nav>
-      <button class="btn">Start Learning</button>
-    </div>
-  </header>  <main id="home" class="wrap">
-    <section class="hero grid">
-      <div class="card">
-        <span class="tag">NCERT • Class 8–12</span>
-        <h1>All Subjects. Notes + PDF + Examples + Diagrams.</h1>
-        <p>Premium, future-ready education app. Simple Hindi + Hinglish. Exam + Future skills ek jagah.</p>
-        <div class="row">
-          <button class="btn">Explore Classes</button>
-          <button class="btn ghost">Download PDFs</button>
-        </div>
-      </div>
-      <div class="card">
-        <h2>What You Get</h2>
-        <div class="subjects list">
-          <a>Mathematics</a><a>Science (Phy/Chem/Bio)</a><a>English</a><a>Hindi</a><a>Social Science</a><a>Computer / IT</a><a>AI & Future Skills</a>
-        </div>
-        <p class="pill">Chapter-wise • Diagram-based • AI Explain</p>
-      </div>
-    </section><section id="classes" class="grid">
-  <div class="card"><h3>Class 8</h3><p>Basic foundation</p></div>
-  <div class="card"><h3>Class 9</h3><p>Concept + proofs</p></div>
-  <div class="card"><h3>Class 10</h3><p>Board focused</p></div>
-  <div class="card"><h3>Class 11</h3><p>Advanced foundation</p></div>
-  <div class="card"><h3>Class 12</h3><p>Professional level</p></div>
+<header>
+  <h1>📘 AI SHIKSHA</h1>
+  <p>NCERT Class 8–12 | All Subjects | AI Tutor</p>
+</header>
+
+<section class="select">
+  <select id="classSelect">
+    <option value="">Class Select</option>
+    <option value="8">Class 8</option>
+  </select>
+
+  <select id="subjectSelect">
+    <option value="">Subject Select</option>
+    <option value="math">Math</option>
+    <option value="science">Science</option>
+  </select>
+
+  <button onclick="loadChapters()">Load Chapters</button>
 </section>
 
-<section id="subjects" class="grid">
-  <div class="card"><h3>Math</h3><p>Formula + Example + Diagram</p></div>
-  <div class="card"><h3>Science</h3><p>Flow + Labelled diagrams</p></div>
-  <div class="card"><h3>English</h3><p>Summary + Meaning</p></div>
-  <div class="card"><h3>Hindi</h3><p>भावार्थ + अभ्यास</p></div>
-  <div class="card"><h3>Social Science</h3><p>Timeline + Maps</p></div>
-  <div class="card"><h3>Computer / AI</h3><p>Logic + Flowchart</p></div>
-</section>
+<section id="chapters"></section>
+<section id="content"></section>
 
-<section id="ai" class="grid ai">
-  <div class="card">
-    <h2>AI Tutor i+</h2>
-    <p>Type karo: <span class="kbd">“Diagram ke sath samjhao”</span></p>
-    <ul>
-      <li>Step-by-step explanation</li>
-      <li>Auto notes & short notes</li>
-      <li>PDF generate</li>
-      <li>Exam + Future view</li>
-    </ul>
-    <button class="btn">Ask AI</button>
-  </div>
-  <div class="card">
-    <h2>Chapter Format</h2>
-    <ol>
-      <li>Introduction</li><li>Concept</li><li>Formula</li><li>Examples (Diagram)</li><li>Practice</li><li>Summary</li><li>PDF</li>
-    </ol>
-  </div>
-</section>
-
-<section id="pdf" class="grid">
-  <div class="card"><h3>Offline PDFs</h3><p>Chapter-wise downloads</p></div>
-  <div class="card"><h3>Revision</h3><p>Smart & quick</p></div>
-</section>
-
-  </main>  <footer class="wrap">
-    <p>© 2026 AI SHIKSHA i+ • GitHub Ready Starter</p>
-  </footer>  <script>
-    // Starter JS (future: routing, data, AI integration)
-    console.log('AI SHIKSHA i+ starter loaded');
-  </script></body>
+<script src="app.js"></script>
+</body>
 </html>
+
+
+---
+
+🎨 2️⃣ style.css (MOBILE FRIENDLY)
+
+body { font-family: Arial; margin:0; background:#f4f6fb; }
+header { background:#1e40af; color:#fff; padding:15px; text-align:center; }
+.select { padding:15px; text-align:center; }
+select, button { padding:10px; margin:5px; }
+#chapters button { display:block; width:90%; margin:10px auto; padding:10px; }
+#content { padding:15px; background:#fff; margin:10px; border-radius:8px; }
+.question { background:#eef; padding:10px; margin:8px 0; border-radius:5px; }
+.answer { color:green; }
+
+
+---
+
+🧠 3️⃣ app.js (REAL LOGIC – CLICKABLE)
+
+async function loadChapters() {
+  const cls = document.getElementById('classSelect').value;
+  const sub = document.getElementById('subjectSelect').value;
+  if(!cls || !sub) return alert('Select class & subject');
+
+  const res = await fetch(`data/class${cls}_${sub}.json`);
+  const data = await res.json();
+
+  let html = '<h2>Chapters</h2>';
+  data.chapters.forEach((ch, i) => {
+    html += `<button onclick="openChapter(${i})">${ch.name}</button>`;
+  });
+  window.chapterData = data.chapters;
+  document.getElementById('chapters').innerHTML = html;
+}
+
+function openChapter(i) {
+  const ch = window.chapterData[i];
+  let html = `<h2>${ch.name}</h2>`;
+  html += `<p>${ch.notes}</p>`;
+  html += `<h3>Example</h3><p>${ch.example}</p>`;
+  html += `<h3>Diagram</h3><p>${ch.diagram}</p>`;
+
+  html += '<h3>Questions</h3>';
+  ch.questions.forEach(q => {
+    html += `<div class="question">${q.q}<br><span class="answer">Ans: ${q.a}</span></div>`;
+  });
+
+  html += `<a href="pdf/demo.pdf" target="_blank">📄 Download PDF</a>`;
+
+  document.getElementById('content').innerHTML = html;
+}
+
+
+---
+
+📘 4️⃣ data/class8_math.json (REAL CONTENT SAMPLE)
+
+{
+  "chapters": [
+    {
+      "name": "Chapter 1: Rational Numbers",
+      "notes": "Rational numbers wo numbers hote hain jo p/q ke form mein likhe ja sakte hain.",
+      "example": "Example: 1/2 + 1/3 = 5/6",
+      "diagram": "Number line par rational numbers ka position",
+      "questions": [
+        {"q": "1/2 + 1/4 = ?", "a": "3/4"},
+        {"q": "-2/3 + 5/3 = ?", "a": "1"}
+      ]
+    }
+  ]
+}
+
+
+---
+
+📄 5️⃣ pdf/demo.pdf
+
+Simple PDF (Notes + Questions)
+
+Tum apna bana sakte ho / replace
+
+
+
+---
+
+🔥 AB YEH KYA KARTA HAI?
+
+✔ Clickable chapters ✔ Real phone & browser compatible ✔ Notes + Example ✔ Diagram text ✔ Questions + solved answers ✔ PDF download ✔ Future: AI Tutor addable
+
+
+---
+
+🚀 NEXT (Tum bolo):
+
+1️⃣ Class 8 Math 15 Basic + 15 Hard Questions (Solved) 2️⃣ Science diagrams (ASCII / SVG) 3️⃣ AI Tutor real prompt logic 4️⃣ Full Class 9–12 content expansion
+
+👉 Likho: "Class 8 Math full chapter bana do"
