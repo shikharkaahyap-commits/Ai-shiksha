@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Shiksha – NCERT Complete Learning</title>
+<title>AI Shiksha – Complete NCERT Learning App</title>
 
 <style>
 body{margin:0;font-family:Arial;background:#f4f6fb}
@@ -13,11 +13,16 @@ header{background:#1e40af;color:#fff;padding:14px;text-align:center;font-size:20
 .card{background:#fff;border-radius:14px;padding:18px;text-align:center;
 box-shadow:0 4px 10px #0001;font-weight:bold;cursor:pointer}
 .section{padding:16px}
-button{width:100%;padding:10px;margin:6px 0;border:none;
-border-radius:8px;background:#22c55e;color:#fff}
+button{width:100%;padding:10px;margin:6px 0;border:none;border-radius:8px;
+background:#22c55e;color:#fff;font-size:14px}
 .back{background:#f59e0b}
-#chatBtn{position:fixed;right:16px;bottom:16px;background:#1e40af;
-color:#fff;padding:10px 14px;border-radius:50px;font-weight:bold}
+h2,h3{margin:8px 0}
+p{line-height:1.7}
+
+/* CHAT */
+#chatBtn{position:fixed;right:16px;bottom:16px;
+background:#1e40af;color:#fff;padding:10px 14px;
+border-radius:50px;font-weight:bold;cursor:pointer}
 #chat{position:fixed;right:16px;bottom:70px;width:260px;height:300px;
 background:#fff;border-radius:14px;box-shadow:0 6px 18px #0004;
 display:flex;flex-direction:column}
@@ -31,68 +36,65 @@ display:flex;flex-direction:column}
 
 <body>
 
-<header>AI Shiksha – NCERT Learning</header>
+<header>AI Shiksha – Complete NCERT Learning</header>
 
+<!-- HOME -->
 <div id="home" class="grid">
-<div class="card" onclick="openClasses()">📚 NCERT Classes (8–12)</div>
-<div class="card" onclick="openAI()">🤖 AI Course</div>
+  <div class="card" onclick="openClasses()">📚 NCERT Classes (8–12)</div>
+  <div class="card" onclick="openAI()">🤖 AI Course</div>
 </div>
 
+<!-- CLASSES -->
 <div id="classes" class="grid hidden"></div>
+
+<!-- SUBJECTS -->
 <div id="subjects" class="grid hidden"></div>
 
+<!-- CHAPTER -->
 <div id="chapter" class="section hidden">
-<h2 id="chapterTitle"></h2>
-<button onclick="showNotes()">📖 Chapter Explanation</button>
-<button onclick="showBasic()">✏️ 15 Basic Questions</button>
-<button onclick="showAdvance()">🚀 15 Advance Questions</button>
-<button class="back" onclick="goBack()">⬅ Back</button>
-<div id="content"></div>
+  <h2 id="chapterTitle"></h2>
+  <button onclick="showNotes()">📖 Teacher Style Notes</button>
+  <button onclick="showBasic()">✏️ 15 Basic Questions</button>
+  <button onclick="showAdvance()">🚀 15 Advance Questions</button>
+  <button class="back" onclick="goBack()">⬅ Back</button>
+  <div id="content"></div>
 </div>
 
+<!-- AI COURSE -->
 <div id="ai" class="section hidden">
 <h2>🤖 Artificial Intelligence (AI)</h2>
 <p>
-1. Artificial Intelligence ka matlab hota hai machine ko intelligent banana.<br>
-2. AI machine ko insaan ki tarah sochne aur decision lene ke layak banata hai.<br>
-3. Jaise Google Assistant, Alexa, ChatGPT – ye sab AI ke example hain.<br><br>
-
-4. Class 8 ke liye AI ka matlab sirf smart computer hota hai.<br>
-5. Class 9–10 me AI data se seekhne lagta hai, jise Machine Learning kehte hain.<br>
-6. Class 11–12 me AI image, voice aur language ko samajhne lagta hai.<br><br>
-
-7. AI ka use education me smart study ke liye hota hai.<br>
-8. AI student ke doubt clear karta hai.<br>
-9. AI teacher ki tarah explanation deta hai.<br><br>
-
-10. AI health me disease pehchanta hai.<br>
-11. AI banking me fraud pakadta hai.<br>
-12. AI cars ko khud chalne me madad karta hai.<br><br>
-
-13. AI future ka important subject hai.<br>
-14. AI career options: AI Engineer, Data Scientist, ML Engineer.<br>
-15. Aane wale time me AI har field me use hoga.
+Artificial Intelligence ka matlab hota hai machine ko intelligent banana,
+taaki wo insaan ki tarah soch sake, decision le sake aur problems solve kar sake.
+AI ka use aaj mobile phones, Google search, YouTube recommendation,
+self-driving cars, medical diagnosis aur education me hota hai.
+</p>
+<p>
+<strong>Basic Level:</strong> AI kya hai, real-life examples jaise Google Assistant,
+ChatGPT, Alexa, face unlock, voice recognition.
+</p>
+<p>
+<strong>Intermediate Level:</strong> Machine Learning – jisme machine data se seekhti hai.
+Jaise exam marks se result predict karna, spam email pehchanna.
+</p>
+<p>
+<strong>Advanced Level:</strong> Deep Learning, Neural Networks,
+AI Engineer, Data Scientist jaise career options.
 </p>
 <button class="back" onclick="goHome()">⬅ Home</button>
 </div>
 
+<!-- CHAT -->
 <div id="chatBtn" onclick="toggleChat()">💬 Ask AI</div>
 <div id="chat" class="hidden">
-<div id="chatHead">AI Teacher</div>
-<div id="chatBody"></div>
-<input id="chatMsg" placeholder="Question likho..."
-onkeydown="if(event.key==='Enter')sendChat()">
+  <div id="chatHead">AI Teacher</div>
+  <div id="chatBody"></div>
+  <input id="chatMsg" placeholder="Question likho..."
+  onkeydown="if(event.key==='Enter')sendChat()">
 </div>
 
 <script>
-const SUBJECTS={
- Maths:["Real Numbers","Polynomials","Linear Equations"],
- Science:["Crop Production","Microorganism","Coal & Petroleum"],
- English:["Prose","Poem","Grammar"],
- Hindi:["Vasंत","Bal Mahabharat","Grammar"],
- SST:["History","Geography","Civics"]
-}
-
+const SUBJECTS=["Maths","Science","English","Hindi","SST"]
 let currentClass="",currentSubject="",currentChapter=""
 
 function hideAll(){
@@ -102,6 +104,7 @@ function hideAll(){
  chapter.classList.add("hidden")
  ai.classList.add("hidden")
 }
+
 function goHome(){hideAll();home.classList.remove("hidden")}
 
 function openClasses(){
@@ -115,95 +118,71 @@ function openClasses(){
  }
  classes.classList.remove("hidden")
 }
-function selectClass(cls){
- currentClass=cls;hideAll();subjects.innerHTML=""
- Object.keys(SUBJECTS).forEach(s=>{
+
+function selectClass(c){
+ currentClass=c
+ hideAll();subjects.innerHTML=""
+ SUBJECTS.forEach(s=>{
   let d=document.createElement("div")
-  d.className="card";d.innerText=s
+  d.className="card"
+  d.innerText=s
   d.onclick=()=>selectSubject(s)
   subjects.appendChild(d)
  })
  subjects.classList.remove("hidden")
 }
+
 function selectSubject(s){
  currentSubject=s
- currentChapter=SUBJECTS[s][0]
+ currentChapter="Chapter 1"
  hideAll();chapter.classList.remove("hidden")
  updateChapter()
 }
+
 function goBack(){selectClass(currentClass)}
 
 function updateChapter(){
- chapterTitle.innerText=`Class ${currentClass} – ${currentSubject} – ${currentChapter}`
+ chapterTitle.innerText=
+ `Class ${currentClass} – ${currentSubject} – ${currentChapter}`
  showNotes()
 }
+
 function showNotes(){
  content.innerHTML=`
- <p><b>${currentChapter}</b> is chapter me hum basic concept se shuru karte hain.
- Isme definition, example aur real life use bataya jata hai.
- Student ko exam ke liye strong base milta hai.</p>`
+ <p><b>${currentChapter}</b> is chapter me concepts ko basic se explain kiya jata hai.
+ Definition, examples, diagrams aur exam tips ke saath.
+ Student ko pehle concept samajh aata hai,
+ phir questions solve karna easy ho jata hai.</p>
+ <p>Teacher suggestion: Pehle notes padho, phir basic questions,
+ uske baad advance questions lagao.</p>`
 }
+
 function showBasic(){
  content.innerHTML="<ol>"+
- Array.from({length:15},(_,i)=>`<li>${currentChapter} ka basic question ${i+1}</li>`).join("")
- +"</ol>"
+ Array.from({length:15},(_,i)=>`
+ <li>Explain the concept related to ${currentChapter} (Basic Question ${i+1})</li>`
+ ).join("")+"</ol>"
 }
+
 function showAdvance(){
  content.innerHTML="<ol>"+
- Array.from({length:15},(_,i)=>`<li>${currentChapter} ka exam level question ${i+1}</li>`).join("")
- +"</ol>"
+ Array.from({length:15},(_,i)=>`
+ <li>Application based question from ${currentChapter} (Advance ${i+1})</li>`
+ ).join("")+"</ol>"
 }
+
 function openAI(){hideAll();ai.classList.remove("hidden")}
+
 function toggleChat(){chat.classList.toggle("hidden")}
 function sendChat(){
  if(!chatMsg.value)return
  chatBody.innerHTML+=`<div class="user">${chatMsg.value}</div>`
- chatBody.innerHTML+=`<div class="bot">Teacher: Is question ka jawab concept se diya jayega.</div>`
+ chatBody.innerHTML+=
+ `<div class="bot">Teacher: Is sawal ka jawab chapter ke concept par based hai.</div>`
  chatMsg.value=""
+ chatBody.scrollTop=chatBody.scrollHeight
 }
 </script>
 
 </body>
 </html>
-const REAL_NUMBERS = {
- notes: `
-Real Numbers wo numbers hote hain jo number line par represent kiye ja sakte hain.
-Isme natural numbers, whole numbers, integers, rational aur irrational sab aate hain.
-Example: 1, -5, 3/4, √2 sab real numbers hain.
-Real numbers ka use daily life me measurement, money aur distance me hota hai.
-`,
- basic: [
-  "Real numbers kya hote hain? Example ke saath likho.",
-  "Natural numbers aur whole numbers me antar likho.",
-  "Integer kya hota hai? 5 example do.",
-  "Rational number ki definition likho.",
-  "Irrational number kya hota hai? √2 ko explain karo.",
-  "Kya 0 ek rational number hai? Explain karo.",
-  "Number line par real numbers kaise show hote hain?",
-  "-7 aur 3 me kaun sa bada hai? Kyun?",
-  "5/7 rational hai ya irrational?",
-  "0.25 rational number hai ya nahi?",
-  "Sab rational numbers real hote hain – true/false?",
-  "√9 real number hai? Reason likho.",
-  "Real numbers ka daily life example likho.",
-  "Kya negative numbers real hote hain?",
-  "Real numbers ka use kahan hota hai?"
- ],
- advance: [
-  "Prove karo ki √5 ek irrational number hai.",
-  "Euclid Division Lemma kya hai?",
-  "HCF nikalne ka Euclid algorithm likho.",
-  "Prove karo ki 2 + √3 irrational hai.",
-  "135 aur 225 ka HCF nikalo.",
-  "Prove karo ki 3√2 irrational hai.",
-  "Agar a aur b co-prime ho to HCF kya hoga?",
-  "17 prime number hai ya nahi?",
-  "Fundamental Theorem of Arithmetic likho.",
-  "306 ka prime factorization karo.",
-  "LCM aur HCF ka relation likho.",
-  "26/65 ko simplest form me lao.",
-  "Terminating decimal ka rule likho.",
-  "7/125 ko decimal me likho.",
-  "Real numbers ka exam importance likho."
- ]
-}
