@@ -1,134 +1,58 @@
-
 <!DOCTYPE html>
 <html lang="hi">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Shiksha – NCERT Class 8–12</title>
-  <link rel="stylesheet" href="style.css">
+  <title>AI Study 📘</title>
+  <style>
+    body { font-family: 'Poppins', sans-serif; margin:0; background:#0f172a; color:#e2e8f0; }
+    header { text-align:center; padding:20px; background:#1e293b; color:#38bdf8; font-size:26px; font-weight:600; }
+    .container { padding:20px; max-width:800px; margin:auto; }
+    .card { background:#1e293b; margin:15px 0; padding:20px; border-radius:15px; box-shadow:0 0 10px rgba(0,0,0,0.4); }
+    .class-name { font-size:22px; color:#38bdf8; margin-bottom:10px; border-bottom:1px solid #334155; padding-bottom:5px; }
+    .subject { font-size:18px; font-weight:500; margin:10px 0; color:#f8fafc; }
+    .type { font-size:14px; color:#94a3b8; }
+    .chapter-list { margin-left:15px; color:#e2e8f0; }
+    .btn { background:#38bdf8; color:#0f172a; border:none; padding:8px 15px; border-radius:8px; margin-top:10px; cursor:pointer; }
+    .btn:hover { background:#7dd3fc; }
+    footer { text-align:center; padding:15px; font-size:13px; color:#64748b; border-top:1px solid #334155; margin-top:30px; }
+  </style>
 </head>
 <body>
-<header>
-  <h1>📘 AI SHIKSHA</h1>
-  <p>NCERT Class 8–12 | All Subjects | AI Tutor</p>
-</header>
+  <header>🤖 AI Study App</header>
+  <div class="container" id="content">Loading...</div>
 
-<section class="select">
-  <select id="classSelect">
-    <option value="">Class Select</option>
-    <option value="8">Class 8</option>
-  </select>
+  <footer>© 2026 AI Study | Powered by Shiksha AI</footer>
 
-  <select id="subjectSelect">
-    <option value="">Subject Select</option>
-    <option value="math">Math</option>
-    <option value="science">Science</option>
-  </select>
+  <script>
+    fetch("https://raw.githubusercontent.com/shikharkaahyap-commits/Ai-shiksha/main/app_structure.json")
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById("content");
+        container.innerHTML = "";
 
-  <button onclick="loadChapters()">Load Chapters</button>
-</section>
+        data.classes.forEach(cls => {
+          const card = document.createElement("div");
+          card.className = "card";
+          let html = `<div class='class-name'>${cls.class_name}</div>`;
 
-<section id="chapters"></section>
-<section id="content"></section>
+          cls.subjects.forEach(sub => {
+            html += `
+              <div class='subject'>${sub.subject} <span class='type'>(${sub.type})</span></div>
+              <ul class='chapter-list'>
+                ${(sub.chapters || []).map(ch => `<li>${ch.chapter}</li>`).join("")}
+              </ul>
+            `;
+          });
 
-<script src="app.js"></script>
+          html += `<button class='btn'>Open Class</button>`;
+          card.innerHTML = html;
+          container.appendChild(card);
+        });
+      })
+      .catch(err => {
+        document.getElementById("content").innerHTML = "⚠️ Error loading data: " + err;
+      });
+  </script>
 </body>
 </html>
-
-
----
-
-🎨 2️⃣ style.css (MOBILE FRIENDLY)
-
-body { font-family: Arial; margin:0; background:#f4f6fb; }
-header { background:#1e40af; color:#fff; padding:15px; text-align:center; }
-.select { padding:15px; text-align:center; }
-select, button { padding:10px; margin:5px; }
-#chapters button { display:block; width:90%; margin:10px auto; padding:10px; }
-#content { padding:15px; background:#fff; margin:10px; border-radius:8px; }
-.question { background:#eef; padding:10px; margin:8px 0; border-radius:5px; }
-.answer { color:green; }
-
-
----
-
-🧠 3️⃣ app.js (REAL LOGIC – CLICKABLE)
-
-async function loadChapters() {
-  const cls = document.getElementById('classSelect').value;
-  const sub = document.getElementById('subjectSelect').value;
-  if(!cls || !sub) return alert('Select class & subject');
-
-  const res = await fetch(`data/class${cls}_${sub}.json`);
-  const data = await res.json();
-
-  let html = '<h2>Chapters</h2>';
-  data.chapters.forEach((ch, i) => {
-    html += `<button onclick="openChapter(${i})">${ch.name}</button>`;
-  });
-  window.chapterData = data.chapters;
-  document.getElementById('chapters').innerHTML = html;
-}
-
-function openChapter(i) {
-  const ch = window.chapterData[i];
-  let html = `<h2>${ch.name}</h2>`;
-  html += `<p>${ch.notes}</p>`;
-  html += `<h3>Example</h3><p>${ch.example}</p>`;
-  html += `<h3>Diagram</h3><p>${ch.diagram}</p>`;
-
-  html += '<h3>Questions</h3>';
-  ch.questions.forEach(q => {
-    html += `<div class="question">${q.q}<br><span class="answer">Ans: ${q.a}</span></div>`;
-  });
-
-  html += `<a href="pdf/demo.pdf" target="_blank">📄 Download PDF</a>`;
-
-  document.getElementById('content').innerHTML = html;
-}
-
-
----
-
-📘 4️⃣ data/class8_math.json (REAL CONTENT SAMPLE)
-
-{
-  "chapters": [
-    {
-      "name": "Chapter 1: Rational Numbers",
-      "notes": "Rational numbers wo numbers hote hain jo p/q ke form mein likhe ja sakte hain.",
-      "example": "Example: 1/2 + 1/3 = 5/6",
-      "diagram": "Number line par rational numbers ka position",
-      "questions": [
-        {"q": "1/2 + 1/4 = ?", "a": "3/4"},
-        {"q": "-2/3 + 5/3 = ?", "a": "1"}
-      ]
-    }
-  ]
-}
-
-
----
-
-📄 5️⃣ pdf/demo.pdf
-
-Simple PDF (Notes + Questions)
-
-Tum apna bana sakte ho / replace
-
-
-
----
-
-🔥 AB YEH KYA KARTA HAI?
-
-✔ Clickable chapters ✔ Real phone & browser compatible ✔ Notes + Example ✔ Diagram text ✔ Questions + solved answers ✔ PDF download ✔ Future: AI Tutor addable
-
-
----
-
-🚀 NEXT (Tum bolo):
-
-1️⃣ Class 8 Math 15 Basic + 15 Hard Questions (Solved) 2️⃣ Science diagrams (ASCII / SVG) 3️⃣ AI Tutor real prompt logic 4️⃣ Full Class 9–12 content expansion
-
-👉 Likho: "Class 8 Math full chapter 
