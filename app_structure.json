@@ -1,0 +1,150 @@
+{
+  "app_name": "AI Study",
+  "theme": {
+    "primary_color": "#2196F3",
+    "secondary_color": "#FFFFFF",
+    "accent_color": "#03A9F4",
+    "font": "Noto Sans Devanagari"
+  },
+  "home_screen": {
+    "title": "AI Study",
+    "sections": [
+      {"name": "Class 8"},
+      {"name": "Class 9"},
+      {"name": "Class 10"},
+      {"name": "AI Learning"},
+      {"name": "Practice / MCQs"},
+      {"name": "Sample Papers"},
+      {"name": "Settings"}
+    ]
+  },
+  "classes": [
+    {
+      "class_name": "Class 8",
+      "subjects": [
+        {
+          "subject": "Mathematics",
+          "type": "3D_Animation",
+          "chapters": [
+            {"chapter": "Rational Numbers", "content_type": "3D_Animation", "file_url": "math8_ch1_3d.mp4"},
+            {"chapter": "Linear Equations", "content_type": "3D_Animation", "file_url": "math8_ch2_3d.mp4"},
+            {"chapter": "Mensuration", "content_type": "Text", "file_url": "math8_ch3.txt"}
+          ]
+        },
+        {
+          "subject": "Science",
+          "type": "3D_Animation",
+          "chapters": [
+            {"chapter": "Crop Production", "content_type": "3D_Animation", "file_url": "sci8_ch1_3d.mp4"},
+            {"chapter": "Microorganisms", "content_type": "3D_Animation", "file_url": "sci8_ch2_3d.mp4"},
+            {"chapter": "Friction", "content_type": "Text", "file_url": "sci8_ch3.txt"}
+          ]
+        },
+        {
+          "subject": "Social Science",
+          "type": "Text_Only",
+          "chapters": [
+            {"chapter": "Resources", "file_url": "sst8_ch1.txt"},
+            {"chapter": "Judiciary", "file_url": "sst8_ch2.txt"}
+          ]
+        },
+        {"subject": "Hindi", "type": "Text_Only", "file_url": "hindi8_books.txt"},
+        {"subject": "English", "type": "Text_Only", "file_url": "eng8_books.txt"}
+      ]
+    },
+    {
+      "class_name": "Class 9",
+      "subjects": [
+        {
+          "subject": "Mathematics",
+          "type": "3D_Animation",
+          "chapters": [
+            {"chapter": "Number Systems", "content_type": "3D_Animation", "file_url": "math9_ch1_3d.mp4"},
+            {"chapter": "Polynomials", "content_type": "3D_Animation", "file_url": "math9_ch2_3d.mp4"}
+          ]
+        },
+        {
+          "subject": "Science",
+          "type": "3D_Animation",
+          "chapters": [
+            {"chapter": "Matter in Our Surroundings", "file_url": "sci9_ch1_3d.mp4"},
+            {"chapter": "Atoms and Molecules", "file_url": "sci9_ch2_3d.mp4"}
+          ]
+        },
+        {"subject": "Social Science", "type": "Text_Only", "file_url": "sst9_all.txt"},
+        {"subject": "Hindi", "type": "Text_Only", "file_url": "hindi9_books.txt"},
+        {"subject": "English", "type": "Text_Only", "file_url": "eng9_books.txt"}
+      ]
+    },
+    {
+      "class_name": "Class 10",
+      "subjects": [
+        {
+          "subject": "Mathematics",
+          "type": "3D_Animation",
+          "chapters": [
+            {"chapter": "Real Numbers", "file_url": "math10_ch1_3d.mp4"},
+            {"chapter": "Trigonometry", "file_url": "math10_ch2_3d.mp4"}
+          ]
+        },
+        {
+          "subject": "Science",
+          "type": "3D_Animation",
+          "chapters": [
+            {"chapter": "Chemical Reactions", "file_url": "sci10_ch1_3d.mp4"},
+            {"chapter": "Life Processes", "file_url": "sci10_ch2_3d.mp4"}
+          ]
+        },
+        {"subject": "Social Science", "type": "Text_Only", "file_url": "sst10_all.txt"},
+        {"subject": "Hindi", "type": "Text_Only", "file_url": "hindi10_books.txt"},
+        {"subject": "English", "type": "Text_Only", "file_url": "eng10_books.txt"}
+      ]
+    }
+  ],
+  "ai_learning": {
+    "title": "AI Learning",
+    "levels": [
+      {
+        "level": "Basic",
+        "topics": [
+          {"title": "What is AI?", "file_url": "ai_basic_1.txt"},
+          {"title": "History of AI", "file_url": "ai_basic_2.txt"}
+        ]
+      },
+      {
+        "level": "Intermediate",
+        "topics": [
+          {"title": "Machine Learning", "file_url": "ai_intermediate_1.txt"},
+          {"title": "Data & Algorithms", "file_url": "ai_intermediate_2.txt"}
+        ]
+      },
+      {
+        "level": "Advanced",
+        "topics": [
+          {"title": "Neural Networks", "file_url": "ai_advanced_1.txt"},
+          {"title": "AI in Real Life", "file_url": "ai_advanced_2.txt"}
+        ]
+      }
+    ]
+  },
+  "ai_chatbot": {
+    "enabled": true,
+    "model": "GPT",
+    "language": "Hindi-English Mix",
+    "prompt": "Explain NCERT topics in simple Hindi with examples"
+  },
+  "practice_section": {
+    "mcqs_per_chapter": 20,
+    "result_display": true
+  },
+  "offline_mode": true,
+  "storage": {
+    "download_path": "/storage/emulated/0/AIStudy/",
+    "file_format": ["pdf", "txt", "mp4"]
+  },
+  "settings": {
+    "dark_mode": true,
+    "font_resize": true,
+    "language_switch": ["Hindi", "English"]
+  }
+}
